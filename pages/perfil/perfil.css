@@ -1,0 +1,70 @@
+/* -------------------------------------------------
+   Estilos Específicos da Página de Perfil
+   -------------------------------------------------
+*/
+
+.profile-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+/* Card de Cabeçalho do Perfil */
+.profile-header-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2.5rem;
+}
+
+.profile-logo-wrapper {
+    flex-basis: 150px;
+    flex-shrink: 0;
+}
+.profile-logo-wrapper img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #e9e9e9;
+}
+
+.profile-info-wrapper {
+    flex: 1;
+    min-width: 300px;
+}
+.profile-info-wrapper h1 {
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+}
+.profile-info-wrapper #profile-creci {
+    font-size: 1rem;
+    color: #777;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1rem;
+}
+.profile-info-wrapper #profile-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.profile-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-weight: 500;
+}
+
+/* Seção da Lista de Anúncios */
+.profile-listings h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}

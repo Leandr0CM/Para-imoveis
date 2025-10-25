@@ -1,0 +1,271 @@
+/* -------------------------------------------------
+   Estilos Específicos da Homepage (index.css)
+   -------------------------------------------------
+*/
+
+/* -------------------------------------------------
+   Estilos da Seção Hero (index.css)
+   -------------------------------------------------
+*/
+.hero {
+    padding: 6rem 0 4rem;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    background-image: url('../../src/images/background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Formulário de Busca da Hero */
+.hero-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero-search-form .form-group-select {
+    flex-grow: 0;
+    flex-shrink: 1; 
+    flex-basis: 190px;
+}
+
+.form-group-large {
+    flex: 2;
+    min-width: 250px;
+}
+
+.hero-search-form .form-group label {
+    color: var(--text-color);
+}
+
+.btn-search {
+    align-self: flex-end;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    height: 48px;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+
+/* -------------------------------------------------
+   Anúncios em Destaque (Carrosséis Temáticos)
+   -------------------------------------------------
+*/
+.featured-listings {
+    padding-top: 4rem;
+    position: relative; 
+    z-index: 2;
+}
+
+/* Ajustes para Carrosséis Temáticos */
+.themed-carousel {
+    padding-bottom: 2rem;
+}
+
+.themed-carousel h2 {
+     text-align: left;
+     margin-bottom: 1.5rem;
+     padding-bottom: 0.5rem;
+     border-bottom: 2px solid var(--border-color);
+}
+
+/* Wrapper que contém os botões e o contêiner de rolagem */
+.carousel-wrapper {
+    position: relative;
+    margin: 0 -10px;
+}
+
+/* Contêiner que efetivamente rola */
+.carousel-container {
+    overflow-x: scroll;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Grid dentro do carrossel: força a linha única */
+.carousel-container .listings-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    padding: 10px;
+}
+
+/* Ajuste no card DENTRO do carrossel */
+.carousel-container .property-card {
+    flex: 0 0 auto;
+    width: 350px;
+    margin-bottom: 10px;
+    position: relative !important;
+}
+
+/* -------------------------------------------------
+   Botões de Navegação do Carrossel
+   -------------------------------------------------
+*/
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 4px;
+    width: 40px;
+    height: 200px;
+    color: white;
+    font-size: 2rem; /* Tamanho da seta */
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.container-wide {
+    max-width: 1600px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.themed-carousel h2 {
+     text-align: center;
+     margin-bottom: 1.5rem;
+     padding-bottom: 0.5rem;
+     border-bottom: 2px solid var(--border-color);
+}
+
+/* -------------------------------------------------
+   CTA para Anunciantes
+   -------------------------------------------------
+*/
+.cta-anunciar {
+    background-color: var(--accent-color);
+    color: var(--bg-white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta-anunciar p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-anunciar .btn-primary {
+    background-color: var(--bg-white);
+    color: var(--accent-color);
+}
+.cta-anunciar .btn-primary:hover {
+    background-color: var(--bg-light);
+}
+
+/* -------------------------------------------------
+   Responsividade (Específica da Homepage)
+   -------------------------------------------------
+*/
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem; /* Título menor no mobile */
+    }
+    .hero p {
+        font-size: 1.2rem; /* Texto menor no mobile */
+    }
+
+    .hero-search-form {
+        flex-direction: column; /* Empilha os campos do formulário */
+        align-items: stretch;
+    }
+    /* Garante que os selects ocupem a largura no mobile */
+    .hero-search-form .form-group-select {
+        flex-basis: auto; /* Reseta a base */
+        min-width: unset; /* Remove o min-width */
+    }
+
+    .btn-search {
+        align-self: auto; /* Reseta o alinhamento */
+        height: auto;
+        max-width: none; /* Ocupa a largura toda */
+    }
+
+    .carousel-btn {
+        display: none; /* Esconde botões no mobile */
+    }
+    .carousel-container .property-card {
+        width: 300px; /* Cards um pouco menores no mobile */
+    }
+    .carousel-wrapper {
+        margin: 0; /* Remove a margem negativa */
+    }
+
+     .themed-carousel h2 {
+         text-align: center; /* Centraliza títulos no mobile */
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="busca.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="search-page-container container">
+
+            <aside class="search-filters">
+                <h2>Filtros Detalhados</h2>
+                <form id="detailed-search-form">
+                    
+                    <div class="filter-group">
+                        <label for="localizacao-detalhada">Localização</label>
+                        <input type="text" id="localizacao-detalhada" placeholder="Cidade ou Estado">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="tipo-detalhado">Tipo de Imóvel</label>
+                        <select id="tipo-detalhado">
+                            <option value="">Todos</option>
+                            <option value="fazenda">Fazenda</option>
+                            <option value="sitio">Sítio</option>
+                            <option value="chacara">Chácara</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="aptidao-detalhada">Aptidão Principal</label>
+                        <select id="aptidao-detalhada">
+                            <option value="">Todas</option>
+                            <option value="pecuaria">Pecuária</option>
+                            <option value="agricultura">Agricultura</option>
+                            <option value="reflorestamento">Reflorestamento</option>
+                            <option value="lazer">Lazer</option>
+                            <option value="arrendamento">Arrendamento</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Faixa de Área (em ha)</h4>
+                        <div class="input-range">
+                            <input type="number" id="min-area" placeholder="Mín.">
+                            <span>-</span>
+                            <input type="number" id="max-area" placeholder="Máx.">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Recursos Hídricos</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="hidricos" value="rio"> Rio ou Córrego</label>
+                            <label><input type="checkbox" name="hidricos" value="nascente"> Nascente</label>
+                            <label><input type="checkbox" name="hidricos" value="poco"> Poço Artesiano</label>
+                            <label><input type="checkbox" name="hidricos" value="acude"> Açude / Represa</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Infraestrutura</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="infra" value="casa_sede"> Casa Sede</label>
+                            <label><input type="checkbox" name="infra" value="curral"> Curral</label>
+                            <label><input type="checkbox" name="infra" value="galpao"> Galpão</label>
+                            <label><input type="checkbox" name="infra" value="cercada"> Cercada</label>
+                            <label><input type="checkbox" name="infra" value="energia"> Energia Elétrica</label>
+                            <label><input type="checkbox" name="infra" value="internet"> Sinal de Internet</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Diferenciais</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="diferenciais" value="drone"> Com Vídeo Drone</label>
+                            <label><input type="checkbox" name="diferenciais" value="geo"> Georreferenciamento (INCRA)</label>
+                            <label><input type="checkbox" name="diferenciais" value="car"> CAR (Validado)</label>
+                            <label><input type="checkbox" name="diferenciais" value="outorga"> Outorga D'água</label>
+                            <label><input type="checkbox" name="diferenciais" value="solo"> Análise de Solo</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Aplicar Filtros</button>
+                    <button type="button" class="btn btn-secondary" id="save-search-btn" style="width: 100%; margin-top: 10px;">Salvar Busca</button>
+
+                </form>
+            </aside>
+
+            <section class="search-results-area">
+                
+                <div class="map-section">
+                    <div class="map-controls">
+                        <button id="map-toggle-map" class="map-toggle-btn active">Mapa</button>
+                        <button id="map-toggle-satellite" class="map-toggle-btn">Satélite</button>
+                    </div>
+                    <div id="map-container">
+                        <p>Aqui será carregado o mapa interativo (Ex: Google Maps, Mapbox).</p>
+                        <p>Cada imóvel encontrado será um marcador no mapa.</p>
+                    </div>
+                </div>
+
+                <div class="results-list-section">
+                    
+                    <div class="results-header">
+                        <h3>Carregando imóveis...</h3>
+                        
+                        <div class="results-controls">
+                            <div class="sort-control">
+                                <label for="sort-by">Ordenar por:</label>
+                                <select id="sort-by" class="sort-select">
+                                    <option value="relevancia">Mais Relevantes</option>
+                                    <option value="preco_asc">Menor Preço</option>
+                                    <option value="preco_desc">Maior Preço</option>
+                                    <option value="area_asc">Menor Área (ha)</option>
+                                    <option value="area_desc">Maior Área (ha)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="layout-toggle">
+                                <button id="btn-layout-list" class="layout-btn active" title="Visualizar em Lista">
+                                    <i class="fa-solid fa-list"></i>
+                                </button>
+                                <button id="btn-layout-grid" class="layout-btn" title="Visualizar em Grade">
+                                    <i class="fa-solid fa-grip"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-list">
+                        </div>
+
+                    <nav class="pagination" aria-label="Paginação">
+                        <ul>
+                            <li><span class="page-item disabled">Anterior</span></li>
+                            <li><a href="#" class="page-item active" aria-current="page">1</a></li>
+                            <li><a href="#" class="page-item">2</a></li>
+                            <li><a href="#" class="page-item">3</a></li>
+                            <li><span class="page-item dots">...</span></li>
+                            <li><a href="#" class="page-item">10</a></li>
+                            <li><a href="#" class="page-item">Próximo</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="comparison-bar" id="comparison-bar">
+        <div class="container">
+            <span id="comparison-count">0 imóveis selecionados</span>
+            <button class="btn btn-primary" id="compare-button">Comparar Agora</button>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="busca.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

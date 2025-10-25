@@ -1,0 +1,137 @@
+/* -------------------------------------------------
+   Estilos Específicos das Páginas Institucionais
+   (anuncie.css, termos.css, privacidade.css)
+   -------------------------------------------------
+*/
+
+.institutional-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    max-width: 1200px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* * Estilo para páginas de texto (Termos, Privacidade)
+*/
+.content-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.content-card h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.content-card p,
+.content-card li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.content-card ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+
+/* * Estilo para a Página de Anúncios (Pricing)
+*/
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-card.featured {
+    border-color: var(--primary-color);
+    transform: scale(1.03);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.pricing-header {
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+.pricing-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+.pricing-header p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.pricing-price span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+.pricing-features li {
+    margin-bottom: 0.8rem;
+}

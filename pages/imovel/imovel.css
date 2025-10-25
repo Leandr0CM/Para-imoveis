@@ -1,0 +1,326 @@
+/* -------------------------------------------------
+   Estilos Específicos da Página do Imóvel
+   -------------------------------------------------
+*/
+
+.property-page-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* 60/40 */
+    gap: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+/* --- Coluna Principal (Esquerda) --- */
+
+/* --- Estilos da Galeria --- */
+.property-gallery .gallery-main-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--bg-white);
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.gallery-thumbnails {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnails .thumbnail {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    opacity: 0.7;
+    transition: all 0.2s ease-in-out;
+}
+
+.gallery-thumbnails .thumbnail:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.gallery-thumbnails .thumbnail.active {
+    opacity: 1;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-color); 
+    transform: scale(1.05); 
+}
+
+
+
+/* --- ATUALIZADO: Title/Price/Favorite Section --- */
+.title-price-section {
+    display: flex; 
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem; 
+}
+
+/* Agrupador esquerdo (Título e Localização) */
+.title-price-section > div:first-child {
+    flex-grow: 1; 
+    min-width: 250px; 
+}
+
+/* Agrupador direito (Preço e Botão) */
+.price-button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.title-price-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.2rem; 
+}
+.title-price-section .location {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 0; 
+}
+.title-price-section .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0; 
+    white-space: nowrap; 
+}
+
+/* --- ATUALIZADO: Estilos para o botão Favoritar --- */
+#imovel-favorite-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 10px 18px; 
+    font-size: 1rem; 
+    flex-shrink: 0; 
+}
+#imovel-favorite-toggle i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    transition: color 0.2s ease;
+}
+#imovel-favorite-toggle.active {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border-color: var(--primary-color);
+}
+#imovel-favorite-toggle.active i {
+    color: #FFD700;
+}
+#imovel-favorite-toggle.active:hover {
+    background-color: #2b4f32;
+    border-color: #2b4f32;
+}
+#imovel-favorite-toggle:hover i {
+    color: var(--bg-white);
+}
+/* --- Fim dos estilos do botão --- */
+
+/* Cards de feature da coluna principal */
+.feature-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.feature-card h2 {
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.description-section .description p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.property-details-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.property-details-list li {
+    font-size: 1.1rem;
+    background-color: var(--bg-light);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+}
+.property-details-list li strong {
+    color: var(--primary-color);
+    display: block;
+    font-size: 0.9rem;
+}
+
+#property-map {
+    height: 450px; 
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+}
+
+
+/* --- Barra Lateral (Direita) --- */
+.property-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+/* Garante que o primeiro card da sidebar não tenha margem no topo */
+.property-sidebar > *:first-child {
+    margin-top: 0;
+}
+
+
+/* --- Estilos da Lista de Features (Infra/Recursos) --- */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.feature-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list span {
+    font-size: 0.95rem; 
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+}
+.feature-list i {
+    width: 22px; 
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; 
+}
+.feature-list .check i {
+    background-color: var(--primary-color);
+}
+.feature-list .check {
+    color: var(--text-color);
+}
+.feature-list .cross i {
+    background-color: #D90429;
+}
+.feature-list .cross {
+    color: var(--text-color); /* Cor do texto "Não" (padrão) */
+}
+.feature-list .na i {
+    background-color: #FFC107;
+}
+.feature-list .na {
+    color: #888;
+}
+
+
+/* Card do Corretor */
+.agent-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-top: 2rem; 
+}
+.agent-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.agent-info img {
+    border-radius: 50%;
+}
+.agent-info strong {
+    font-size: 1.1rem;
+}
+.agent-info span {
+    font-size: 0.9rem;
+    color: #666;
+    display: block;
+}
+
+.agent-contact-form p {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.agent-contact-form input,
+.agent-contact-form textarea {
+    width: 100%;
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+}
+.agent-contact-form button {
+    width: 100%;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .property-page-grid {
+        grid-template-columns: 1fr;
+    }
+    .property-sidebar {
+        position: static;
+        top: 0;
+    }
+    .title-price-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .price-button-group {
+        display: block; 
+        width: 100%;
+    }
+    .title-price-section h1 {
+        font-size: 2.2rem;
+    }
+    .title-price-section .price {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    #imovel-favorite-toggle {
+        width: auto;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}

@@ -1,0 +1,201 @@
+/* -------------------------------------------------
+   Estilos Específicos da Página de Comparação (comparacao.css)
+   -------------------------------------------------
+*/
+
+.comparison-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.comparison-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.comparison-page p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Wrapper que permite a tabela rolar horizontalmente */
+.comparison-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-white);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px; 
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 1px solid var(--border-color);
+    padding: 1.2rem;
+    vertical-align: top;
+    text-align: left;
+}
+
+/* Estilo do Cabeçalho da Tabela (os cards dos imóveis) */
+.comparison-table thead th {
+    background-color: var(--bg-light);
+    width: 280px;
+    vertical-align: top;
+}
+
+/* Primeira Célula do Cabeçalho (label "Característica") */
+.comparison-table thead th:first-child {
+    width: 200px;
+    font-size: 1.2rem;
+    text-align: right;
+    background-color: var(--bg-white);
+    position: sticky;
+    left: 0;
+    z-index: 10;
+}
+
+/* Card do Imóvel no Cabeçalho */
+.comparison-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.comparison-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    background-color: #e9e9e9;
+}
+
+.comparison-card h4 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+.comparison-card .card-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+
+/* Corpo da Tabela */
+.comparison-table tbody tr:nth-child(even) {
+    background-color: var(--bg-light);
+}
+
+/* Célula de Header da Linha (ex: "Área Total") */
+.comparison-table tbody tr:not(.section-header-row) td:first-child {
+    font-weight: 700;
+    text-align: right;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: inherit; /* Herda a cor da <tr> (para manter o zebrado) */
+}
+
+/* --- ATUALIZADO: Lista de Infraestrutura (dentro da tabela) --- */
+.infra-list-compare {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95rem; 
+    font-weight: 500;
+    
+    /* Alinha o ícone e o texto */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Leve aumento no espaço */
+}
+
+/* --- NOVO: Estilo base para o ícone (o círculo) --- */
+.infra-list-compare i {
+    /* Formato e tamanho do círculo */
+    width: 22px; 
+    height: 22px;
+    border-radius: 50%; /* Faz o círculo */
+    font-size: 0.8rem; /* Tamanho do ícone (check, times, minus) */
+    
+    /* Centraliza o ícone dentro do círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Cor do ícone (check, times, minus) */
+    color: white; 
+}
+
+/* --- CORRIGIDO: Cores para "Sim" (Verde) --- */
+/* (Removido o espaço entre .infra-list-compare e .check) */
+.infra-list-compare.check i {
+    background-color: var(--primary-color); /* Fundo Verde */
+}
+
+
+/* --- CORRIGIDO: Cores para "Não" (Vermelho) --- */
+/* (Removido o espaço entre .infra-list-compare e .cross) */
+.infra-list-compare.cross i {
+    background-color: #D90429; /* Fundo Vermelho */
+}
+
+/* --- CORRIGIDO: Cores para "N/I" (Amarelo) --- */
+/* (Removido o espaço entre .infra-list-compare e .na) */
+.infra-list-compare.na i {
+    background-color: #FFC107; /* Fundo Amarelo (alerta) */
+}
+.infra-list-compare.na {
+    color: #888; /* Cor do texto "N/I" */
+}
+
+/* Estilo para as linhas de título de seção */
+.comparison-table .section-header-row td {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+    position: static; 
+}
+
+/* -------------------------------------------------
+   Estilos para Seções Colapsáveis (Minimizar)
+   -------------------------------------------------
+*/
+
+/* Torna a linha de cabeçalho clicável */
+.section-header-row.collapsible {
+    cursor: pointer;
+    user-select: none; /* Impede a seleção de texto ao clicar */
+}
+
+.section-header-row.collapsible td {
+    /* Garante que o ícone fique posicionado corretamente */
+    position: relative; 
+}
+
+/* Ícone de seta (chevron) */
+.toggle-icon {
+    position: absolute;
+    right: 1.5rem; /* Alinha à direita */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--primary-color); /* Cor do ícone */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Estado "Fechado" (.collapsed) */
+.section-header-row.collapsed .toggle-icon {
+    transform: translateY(-50%) rotate(-90deg); /* Gira a seta */
+}
+
+/* Classe para esconder as linhas de conteúdo */
+tr.hidden {
+    display: none;
+}

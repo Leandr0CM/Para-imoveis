@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar ou Cadastrar - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="../../style.css">
+    
+    <link rel="stylesheet" href="login.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="auth-container">
+            
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="auth-tab-login">Entrar</button>
+                <button class="auth-tab-btn" id="auth-tab-register">Cadastrar-se</button>
+            </div>
+
+            <div class="auth-forms-wrapper">
+                
+                <form id="login-form">
+                    <h2>Acesse sua conta</h2>
+                    <div class="form-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" id="login-senha" required>
+                    </div>
+                    <a href="#" id="forgot-password-link" class="auth-helper-link">Esqueceu sua senha?</a>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Entrar</button>
+                </form>
+
+                <form id="register-form">
+                    <h2>Crie sua conta</h2>
+                    <div class="form-group">
+                        <label for="reg-name">Nome Completo</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">E-mail</label>
+                        <input type="email" id="reg-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-phone">Telefone (WhatsApp)</label>
+                        <input type="tel" id="reg-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-senha">Senha</label>
+                        <input type="password" id="reg-senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-senha-confirm">Confirmar Senha</label>
+                        <input type="password" id="reg-senha-confirm" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Conta</label>
+                        <div class="form-group-radio">
+                            <label><input type="radio" name="account-type" id="tipo-comprador" value="comprador" checked> Quero comprar/buscar</label>
+                            <label><input type="radio" name="account-type" id="tipo-vendedor" value="vendedor"> Quero anunciar (Vendedor/Corretor)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="creci-field-wrapper">
+                        <label for="reg-creci">CRECI (Obrigatório para corretores/imobiliárias)</label>
+                        <input type="text" id="reg-creci" placeholder="Ex: F-12345 ou J-54321">
+                    </div>
+
+                    <div class="form-group-checkbox">
+                        <label>
+                            <input type="checkbox" id="reg-terms" required>
+                            Eu li e aceito os <a href="#termos" target="_blank">Termos de Uso</a> e a <a href="#privacidade" target="_blank">Política de Privacidade</a>.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Criar Conta</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="login.js"></script>
+    <script src="../../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Imóveis Rurais - Encontre sua Fazenda</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero" id="buscar">
+            <div class="hero-content">
+                <h1>Encontre a propriedade rural ideal</h1>
+                <p>A plataforma especialista com as melhores ferramentas de análise e busca.</p>
+
+                <form class="hero-search-form" id="hero-search-form">
+                    <div class="form-group form-group-select">
+                        <label for="tipo-imovel">Tipo de Imóvel</label>
+                        <select id="tipo-imovel" name="tipo">
+                            <option value="">Todos os Tipos</option>
+                            <option value="fazenda">Fazenda</option>
+                            <option value="sitio">Sítio</option>
+                            <option value="chacara">Chácara</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-select">
+                        <label for="aptidao">Aptidão Principal</label>
+                        <select id="aptidao" name="aptidao">
+                            <option value="">Todas as Aptidões</option>
+                            <option value="pecuaria">Pecuária</option>
+                            <option value="agricultura">Agricultura</option>
+                            <option value="reflorestamento">Reflorestamento</option>
+                            <option value="lazer">Lazer</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-large">
+                        <label for="localizacao">Localização (Cidade ou Estado)</label>
+                        <input type="text" id="localizacao" name="localizacao" placeholder="Digite a cidade ou estado">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-search">Buscar</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="featured-listings themed-carousel" id="destaques-pecuaria">
+            <div class="container container-wide">
+                <h2>Pecuária em Destaque</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev" id="prevBtnPecuaria" aria-label="Anterior Pecuária">&lt;</button>
+                    <div class="carousel-container" id="carouselPecuaria">
+                        <div class="listings-grid">
+                            <p>Carregando destaques de pecuária...</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="nextBtnPecuaria" aria-label="Próximo Pecuária">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-listings themed-carousel" id="destaques-agricultura">
+            <div class="container container-wide">
+                <h2>Agricultura em Destaque</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev" id="prevBtnAgricultura" aria-label="Anterior Agricultura">&lt;</button>
+                    <div class="carousel-container" id="carouselAgricultura">
+                        <div class="listings-grid">
+                             <p>Carregando destaques de agricultura...</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="nextBtnAgricultura" aria-label="Próximo Agricultura">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-listings themed-carousel" id="destaques-arrendamento">
+             <div class="container container-wide">
+                <h2>Arrendamentos em Destaque</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev" id="prevBtnArrendamento" aria-label="Anterior Arrendamento">&lt;</button>
+                    <div class="carousel-container" id="carouselArrendamento">
+                        <div class="listings-grid">
+                             <p>Carregando destaques de arrendamento...</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="nextBtnArrendamento" aria-label="Próximo Arrendamento">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-anunciar" id="anunciar">
+            <div class="container">
+                <h2>Quer vender ou alugar seu imóvel rural?</h2>
+                <p>Anuncie na plataforma especialista e alcance milhares de compradores e investidores do agronegócio.</p>
+                <a href="/pages/institucionais/anuncie.html" class="btn btn-primary btn-large">Conheça nossos planos</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="index.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Imóvel - PlataformaRural</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="imovel.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="container property-page-grid">
+
+            <section class="property-main-info">
+
+                <div class="title-price-section">
+                    <div> 
+                        <h1 id="imovel-title"></h1>
+                        <p class="location" id="imovel-location"></p>
+                    </div>
+                    <div class="price-button-group"> 
+                        <span class="price" id="imovel-price"></span>
+                        <button id="imovel-favorite-toggle" class="btn btn-outline" data-id=""> 
+                            <i class="fa-regular fa-star"></i>
+                            <span>Adicionar aos Favoritos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="property-gallery feature-card"> 
+                    <img src="https://images.unsplash.com/photo-1596924036923-9e M3d84f4756b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200&h=700&fit=crop" alt="Foto principal do imóvel" class="gallery-main-image">
+                    <div class="gallery-thumbnails">
+                        <img src="https://via.placeholder.com/150x100?text=Foto+2" alt="Thumbnail 1" class="thumbnail active">
+                        <img src="https://via.placeholder.com/150x100?text=Foto+3" alt="Thumbnail 2" class="thumbnail">
+                        <img src="https://via.placeholder.com/150x100?text=Drone" alt="Thumbnail 3" class="thumbnail">
+                        <img src="https://via.placeholder.com/150x100?text=Sede" alt="Thumbnail 4" class="thumbnail">
+                    </div>
+                </div>
+
+                <div class="description-section feature-card">
+                    <h2>Descrição</h2>
+                    <div class="description" id="imovel-description">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="details-section feature-card">
+                    <h2>Detalhes Principais</h2>
+                    <ul class="property-details-list" id="property-details-list">
+                        </ul>
+                </div>
+
+                <div class="feature-card" id="recursos-hidricos-card">
+                    <h3>Recursos Hídricos</h3>
+                    <ul class="feature-list" id="recursos-hidricos-list">
+                        </ul>
+                </div>
+                
+                <div class="feature-card" id="infraestrutura-card">
+                    <h3>Infraestrutura</h3>
+                    <ul class="feature-list" id="infraestrutura-list">
+                        </ul>
+                </div>
+                
+            </section>
+
+            <aside class="property-sidebar">
+                
+                
+                <div class="map-section feature-card">
+                    <h2>Localização no Mapa</h2>
+                    <div id="property-map">
+                        <p>Carregando mapa...</p>
+                    </div>
+                </div>
+                
+                <div class="agent-card" id="corretor-card">
+                    <h4>Anunciado por</h4>
+                    <div class="agent-info">
+                        <img src="https://via.placeholder.com/80x80?text=Corretor" alt="Foto do Corretor">
+                        <div>
+                            <strong>Carlos Almeida</strong>
+                            <span>CRECI-PR 12345F</span>
+                        </div>
+                    </div>
+                    <form class="agent-contact-form">
+                        <p>Entre em contato sobre este imóvel:</p>
+                        <input type="text" placeholder="Seu nome" required>
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <input type="tel" placeholder="Seu telefone (WhatsApp)">
+                        <textarea rows="4" placeholder="Olá, tenho interesse neste imóvel..." required></textarea>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script src="imovel.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>
