@@ -8,17 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Verificação da configuração do Supabase
   console.log("Verificando configuração do Supabase...");
   console.log("SUPABASE_URL:", window.SUPABASE_URL);
-  console.log(
-    "SUPABASE_ANON_KEY:",
-    window.SUPABASE_ANON_KEY ? "✓ Configurada" : "✗ Não configurada"
-  );
-
+  console.log("SUPABASE_ANON_KEY:", window.SUPABASE_ANON_KEY ? "✓ Configurada" : "✗ Não configurada");
+  
   if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
-    console.error(
-      "AVISO: Credenciais do Supabase não configuradas corretamente!"
-    );
+    console.error("AVISO: Credenciais do Supabase não configuradas corretamente!");
   }
-
+  
   // Testa a conexão com o Supabase
   try {
     const supabase = await getSupabase();
@@ -79,16 +74,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function getSupabase() {
     if (window.supabaseClient) return window.supabaseClient;
     if (window.__supabase_client) return window.__supabase_client;
-
-    const errorMsg = [
-      "Supabase não inicializado corretamente.",
-      "Verifique se:",
-      "1. O arquivo scripts/site-config.js foi carregado",
-      "2. As variáveis SUPABASE_URL e SUPABASE_ANON_KEY estão definidas",
-      "3. O arquivo scripts/supabase-client.js foi carregado após site-config.js",
-    ].join("\n");
-
-    throw new Error(errorMsg);
+    throw new Error(
+      "Supabase não inicializado. Verifique `scripts/supabase-client.js` e as variáveis `SUPABASE_URL`/`SUPABASE_ANON_KEY`."
+    );
   }
 
   loginForm.addEventListener("submit", async (e) => {
@@ -109,42 +97,37 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const supabase = await getSupabase();
-
+      
       console.log("Tentando fazer login com:", { email });
-
+      
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-
+      
       if (error) {
         console.error("Erro detalhado:", error);
-
+        
         // Mensagens de erro mais específicas
         if (error.message.includes("Invalid login credentials")) {
           alert("E-mail ou senha incorretos. Por favor, verifique seus dados.");
         } else if (error.message.includes("Email not confirmed")) {
           alert("Por favor, confirme seu e-mail antes de fazer login.");
         } else if (error.status === 400) {
-          alert(
-            "Erro de autenticação. Verifique se:\n1. A autenticação por email está habilitada no Supabase\n2. O projeto está ativo\n3. As credenciais estão corretas\n\nDetalhes: " +
-              error.message
-          );
+          alert("Erro de autenticação. Verifique se:\n1. A autenticação por email está habilitada no Supabase\n2. O projeto está ativo\n3. As credenciais estão corretas\n\nDetalhes: " + error.message);
         } else {
           alert("Erro no login: " + error.message);
         }
         return;
       }
-
+      
       console.log("Login bem-sucedido:", data);
       // Login bem-sucedido
       alert("Login efetuado com sucesso!\nRedirecionando...");
       window.location.href = "../index/index.html";
     } catch (err) {
       console.error("Erro capturado:", err);
-      alert(
-        "Erro ao tentar fazer login. Verifique o console para mais detalhes."
-      );
+      alert("Erro ao tentar fazer login. Verifique o console para mais detalhes.");
     }
   });
 

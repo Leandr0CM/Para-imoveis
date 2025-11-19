@@ -93,6 +93,13 @@
 
     <div id="footer-placeholder"></div>
 
+    <!-- Supabase JS (UMD) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <!-- Carrega a configuração gerada a partir do .env (scripts/site-config.js) -->
+    <script src="../../scripts/site-config.js"></script>
+    <!-- Inicializador do cliente Supabase: define `window.supabase` usando as variáveis globais -->
+    <script src="../../scripts/supabase-client.js"></script>
+
     <script src="login.js"></script>
     <script src="../../main.js"></script>
 </body>

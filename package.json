@@ -1,0 +1,11 @@
+{
+  "name": "para-imoveis-frontend",
+  "version": "1.0.0",
+  "description": "Frontend estático da PlataformaRural - utilitários para desenvolvimento",
+  "scripts": {
+    "gen-config": "node ./scripts/generate-site-config.js",
+    "start": "npm run gen-config && npx http-server -p 8000"
+  },
+  "author": "",
+  "license": "MIT"
+}
