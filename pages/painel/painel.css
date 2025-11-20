@@ -1,8 +1,8 @@
-/* -------------------------------------------------
-   Estilos Específicos do Painel de Usuário
-   -------------------------------------------------
+/* painel.css (GLOBAL)
+   Estilos estruturais e componentes compartilhados do Painel do Usuário.
 */
 
+/* --- Layout Principal --- */
 .painel-container {
     display: flex;
     flex-wrap: wrap;
@@ -56,13 +56,13 @@
     background-color: #fbeee2;
 }
 
-
 /* Área de Conteúdo (Direita) */
 .painel-content {
     flex: 3;
-    min-width: 300px;
+    min-width: 400px;
 }
 
+/* Título padrão das páginas */
 .painel-content h1 {
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
@@ -70,129 +70,13 @@
     padding-bottom: 0.5rem;
 }
 
-/* Card Específico para 'Buscas Salvas' */
-.card-busca-salva {
-    background-color: var(--bg-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.busca-info h3 {
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.busca-filtros {
-    font-size: 0.9rem;
-    color: #555;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.busca-filtros .filtro-tag {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-}
-
-.busca-actions {
-    display: flex;
-    gap: 0.5rem;
-    flex-shrink: 0;
-}
-
-/* -------------------------------------------------
-   Estilos para o Gerenciador de Anúncios (RF 12)
-   -------------------------------------------------
-*/
-
-.painel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-}
-.painel-header h1 {
-    margin: 0;
-    border: none;
-    padding: 0;
-}
-
-.btn-novo-anuncio {
-    flex-shrink: 0;
-}
-
-/* Card de Gerenciamento de Anúncio */
-.card-anuncio-gerencia {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: var(--bg-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    gap: 1rem;
-    align-items: center;
-    transition: background-color 0.3s, opacity 0.3s;
-}
-
-.card-anuncio-gerencia.paused {
-    background-color: #fafafa;
-    opacity: 0.7;
-}
-
-.anuncio-img {
-    width: 120px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 5px;
-    flex-shrink: 0;
-}
-
-.anuncio-info {
-    flex: 1;
-    min-width: 200px;
-}
-.anuncio-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-.anuncio-info .anuncio-price {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.anuncio-stats {
-    flex-basis: 150px;
-    flex-shrink: 0;
-    font-size: 0.9rem;
-    color: #555;
-}
-.anuncio-stats .stat-item {
-    display: block;
-}
-
-.anuncio-controls {
-    display: flex;
-    gap: 0.5rem;
-    flex-basis: 100px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+/* --- Utilitários de Botão do Painel --- */
+.btn.btn-icon {
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    font-size: 1rem;
+    line-height: 1.2;
 }
 
 .btn-danger {
@@ -209,222 +93,160 @@
     font-size: 0.8rem;
 }
 
-/* -------------------------------------------------
-   Estilos para a Visão Geral (Dashboard)
-   -------------------------------------------------
-*/
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+/* --- Componente Global: Modal de Confirmação --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
-.summary-card {
-    display: block;
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
     background-color: var(--bg-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     padding: 1.5rem 2rem;
-    text-decoration: none;
-    color: var(--text-color);
-    border-bottom: 4px solid var(--border-color);
-    transition: all 0.2s ease-in-out;
-}
-
-.summary-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-    border-bottom-color: var(--primary-color);
-}
-
-.summary-card h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.summary-card .stat-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin: 0.5rem 0;
-}
-
-.summary-card p {
-    font-size: 1rem;
-    color: #555;
-    margin: 0;
-}
-
-.summary-card .card-link {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-top: 1.5rem;
-    display: block;
-}
-
-/* Card de Ação (ex: Anunciar Novo) */
-.summary-card.action {
-    background-color: var(--bg-light);
-    border-style: dashed;
-    border-bottom-style: solid;
-    text-align: center;
-}
-
-.summary-card.action:hover {
-     border-bottom-color: var(--accent-color);
-}
-
-.summary-card.action h3 {
-    color: var(--accent-color);
-}
-
-.summary-card.action .stat-number {
-    color: var(--accent-color);
-    font-size: 2.5rem;
-}
-
-.summary-card.action .card-link {
-     color: var(--accent-color);
-}
-/* -------------------------------------------------
-   Estilos para a Página "Minhas Perguntas" (RF 11)
-   -------------------------------------------------
-*/
-
-.card-pergunta {
-    background-color: var(--bg-white);
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 450px;
+    width: 90%;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-out;
 }
 
-.pergunta-header {
-    background-color: var(--bg-light);
-    padding: 0.8rem 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    border-radius: 8px 8px 0 0;
-    font-size: 0.9rem;
-    color: #555;
+.modal-overlay.active .modal-content {
+    transform: scale(1);
 }
 
-.pergunta-header a {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.qa-item {
-    padding: 1.5rem;
-}
-.qa-question {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-.qa-answer {
-    font-size: 1.1rem;
-    color: #333;
-    padding-left: 1rem;
-    border-left: 3px solid var(--primary-color);
-    margin-top: 1rem;
-}
-.qa-answer.pending {
-    color: #777;
-    border-left-color: #ccc;
-    font-style: italic;
-}
-
-/* -------------------------------------------------
-   Estilos para a Página "Meu Perfil"
-   -------------------------------------------------
-*/
-
-.perfil-form {
-    background-color: var(--bg-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    padding: 2rem;
-}
-
-.form-section {
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-}
-.perfil-form .form-section:last-of-type {
-    border-bottom: none;
-    margin-bottom: 1rem;
-}
-
-.form-section h2 {
+.modal-header h3 {
     font-size: 1.5rem;
-    font-weight: 700;
     color: var(--primary-color);
+    margin: 0 0 1rem 0;
+}
+
+.modal-body p {
+    font-size: 1rem;
+    color: #333;
     margin-bottom: 1.5rem;
 }
 
-.form-helper {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-}
-
-/* Checkbox "Sou anunciante" */
-.form-group-toggle {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 2rem 0;
-}
-.form-group-toggle label {
-    font-weight: 500;
-    font-size: 1.1rem;
+.modal-footer {
     display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    cursor: pointer;
-}
-.form-group-toggle input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    justify-content: flex-end;
+    gap: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
 }
 
-/* Logo Upload */
-.logo-upload-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-#logo-preview {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px dashed var(--border-color);
-    padding: 5px;
-}
-
-#logo-upload {
-    display: none;
-}
-
-.logo-upload-wrapper .btn-sm {
-    cursor: pointer;
-}
-
-/* Ajustes Responsivos para o Painel */
+/* --- Responsividade Geral --- */
 @media (max-width: 992px) {
     .painel-container {
         flex-direction: column;
     }
-    
     .painel-sidebar {
         width: 100%;
         max-width: none;
     }
 }
+
+/* ==========================================================================
+   SISTEMA DE FORMULÁRIOS DO PAINEL (COMPARTILHADO)
+   Usado em: painel-perfil.html e painel-configuracoes.html
+   ========================================================================== 
+*/
+
+.perfil-form { 
+    background-color: var(--bg-white); 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
+    padding: 1.5rem 2rem; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+}
+
+.perfil-form .form-section { 
+    background-color: transparent; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0; 
+}
+
+/* Containers de Grid Flex */
+#unified-form-section, #unified-config-section { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 1rem 1.5rem; 
+    align-items: flex-start; 
+}
+
+.form-group { 
+    flex-grow: 1; 
+    flex-basis: 30%; 
+    min-width: 250px; 
+}
+
+/* Inputs ocupando 100% do seu container pai */
+.perfil-form input[type="text"], 
+.perfil-form input[type="email"], 
+.perfil-form input[type="tel"], 
+.perfil-form input[type="password"], 
+.perfil-form textarea { 
+    max-width: 100%; 
+}
+
+/* Estilo 'Read-only' para inputs desabilitados */
+.perfil-form input:disabled:not([type="checkbox"]), 
+.perfil-form textarea:disabled { 
+    background-color: var(--bg-light); 
+    border: 1px solid var(--border-color); 
+    color: #555; 
+    cursor: default; 
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04); 
+    -webkit-text-fill-color: #555; 
+    opacity: 1; 
+}
+
+/* Elementos que ocupam linha inteira */
+.form-section-subheader, 
+.form-helper, 
+.form-group-toggle, 
+.form-group-fullwidth, 
+.form-section-subset { 
+    flex-basis: 100%; 
+}
+
+.form-section-subheader { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: var(--primary-color); 
+    padding-bottom: 0.5rem; 
+    border-bottom: 2px solid var(--border-color); 
+    margin: 1.5rem 0 0.5rem 0; 
+}
+
+#unified-form-section > .form-section-subheader:first-of-type { margin-top: 0; }
+
+.form-section-subset { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: flex-start; }
+
+/* Toggle Checkbox Style */
+.form-group-toggle { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); background-color: transparent; border-radius: 0; padding: 1rem 0 0 0; }
+.form-group-toggle label { font-weight: 500; font-size: 1.1rem; display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+.form-group-toggle input[type="checkbox"] { width: 18px; height: 18px; }
+.form-group-toggle input[type="checkbox"]:disabled + label { color: #777; cursor: default; }
+.form-group-toggle input[type="checkbox"]:disabled { opacity: 0.7; }
+
+.form-actions-footer { display: flex; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); margin-top: 1rem; }

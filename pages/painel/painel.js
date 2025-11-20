@@ -1,60 +1,337 @@
-// pages/painel/painel.js (Arquivo Unificado)
-
 document.addEventListener('DOMContentLoaded', () => {
+
+    const pageId = document.body.id;
+
+    // --- INÍCIO: CARREGAMENTO DA SIDEBAR ---
+    const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+
+    if (sidebarPlaceholder) {
+        // ATUALIZADO: Agora busca 'sidebar.html' em vez de 'painel-sidebar.html'
+        fetch('sidebar.html') 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Não foi possível carregar o sidebar.html');
+                }
+                return response.text();
+            })
+            .then(data => {
+                sidebarPlaceholder.innerHTML = data;
+                
+                // Lógica Genérica para ativar o link correto na sidebar
+                // Funciona para qualquer ID no formato "page-NOME" (ex: page-geral -> geral.html)
+                if (pageId.startsWith('page-')) {
+                    const pageName = pageId.replace('page-', ''); // Remove 'page-' sobra 'geral', 'anuncio', etc.
+                    const targetHref = `${pageName}.html`; 
+                    
+                    // Procura o link que tenha o href exato
+                    const activeLink = sidebarPlaceholder.querySelector(`nav a[href="${targetHref}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao buscar a sidebar:', error);
+                sidebarPlaceholder.innerHTML = '<p style="padding: 1rem 1.5rem; color: red;">Erro ao carregar menu.</p>';
+            });
+    }
+    // --- FIM: SIDEBAR ---
+
 
     // --- SIMULAÇÃO DE DADOS GLOBAIS DO USUÁRIO ---
     const mockUserData = {
         nome: "Carlos Silva",
         email: "carlos.silva@emailteste.com",
         telefone: "(41) 98765-4321",
-        isAnunciante: true, // Define se ele tem perfil de vendedor
+        isAnunciante: true,
         perfilAnunciante: {
             nomePublico: "Carlos Silva - Corretor Rural",
             creci: "CRECI/PR F-98765",
             logoUrl: "https://via.placeholder.com/150/BC6C25/FFFFFF?text=CS",
-            descricao: "Corretor especializado em fazendas na região metropolitana de Curitiba."
+            descricao: "" 
         },
         stats: {
-            anunciosAtivos: 1, // Apenas 1 dos 2 está ativo nos mocks
+            anunciosAtivos: 1, 
             mensagensNaoLidas: 1,
             buscasSalvas: 3
         }
     };
-    // --------------------------------------------------
 
-    const pageId = document.body.id;
 
     // ===================================================================
-    // RODA APENAS NA PÁGINA "VISÃO GERAL"
+    // RODA APENAS NA PÁGINA "VISÃO GERAL" (ID: page-geral)
     // ===================================================================
-    if (pageId === 'page-painel-geral') {
+    if (pageId === 'page-geral') {
         console.log("Página de Visão Geral carregada.");
 
-        // **** POPULAR DADOS ****
+        // Popular saudação
         const greetingElement = document.getElementById('user-name-greeting');
-        const statAnuncios = document.getElementById('stat-anuncios');
-        const statMensagens = document.getElementById('stat-mensagens');
-        const statBuscas = document.getElementById('stat-buscas');
-
         if (greetingElement) greetingElement.textContent = mockUserData.nome;
-        if (statAnuncios) statAnuncios.textContent = mockUserData.stats.anunciosAtivos;
-        if (statMensagens) statMensagens.textContent = mockUserData.stats.mensagensNaoLidas;
-        if (statBuscas) statBuscas.textContent = mockUserData.stats.buscasSalvas;
+
+        // --- MOCKS DE DADOS (Visão Geral) ---
+
+        const mockConversas = [
+            { id: 'c1', nome: 'Imobiliária Terra Forte', anuncioTitulo: 'Fazenda Pronta para Pecuária', preview: 'Olá! Sim, documentação 100%.', unread: true },
+            { id: 'c2', nome: 'João da Silva (Vendedor)', anuncioTitulo: 'Sítio para Agricultura Familiar', preview: 'A internet aqui é via rádio...', unread: false },
+            { id: 'c3', nome: 'Ana Pereira', anuncioTitulo: 'Chácara de Lazer com Nascente', preview: 'Obrigada pelo retorno!', unread: false }
+        ];
+        
+        const mockAnuncios = [
+            { id: 'anuncio-1', img: 'https://images.unsplash.com/photo-1596924036923-9e3d84f4756b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Fazenda Pronta para Pecuária', preco: 4500000, visualizacoes: 1250, favoritos: 28, pausado: false },
+            { id: 'anuncio-2', img: 'https://images.unsplash.com/photo-1444858291040-5c7f113a1eb1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Sítio para Agricultura Familiar', preco: 1200000, visualizacoes: 480, favoritos: 15, pausado: true }
+        ];
+
+        const mockBuscasSalvas = [
+            { id: 'busca-1', titulo: 'Fazendas em Castro, PR', filtros: ['Fazenda', 'Pecuária', 'Castro, PR'] },
+            { id: 'busca-2', titulo: 'Sítios com Rio', filtros: ['Sítio', 'Rio ou Córrego', 'Casa Sede'] },
+            { id: 'busca-3', titulo: 'Chácaras de Lazer (Piscina)', filtros: ['Chácara', 'Piscina', 'Internet'] }
+        ];
+
+        const mockFavoritos = [
+            { id: 'fav-1', img: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&w=100&h=100&fit=crop', titulo: 'Chácara Vale Verde', preco: 350000 },
+            { id: 'fav-2', img: 'https://images.unsplash.com/photo-1595877244574-e90ce41ce089?ixlib=rb-4.0.3&w=100&h=100&fit=crop', titulo: 'Sítio Santa Fé', preco: 890000 }
+        ];
+
+        // --- LÓGICA DO MODAL DE EXCLUSÃO ---
+        const modalOverlay = document.getElementById('confirm-delete-modal');
+        const modalMessage = document.getElementById('modal-delete-message');
+        const modalConfirmBtn = document.getElementById('modal-btn-confirm-delete');
+        const modalCancelBtn = document.getElementById('modal-btn-cancel');
+        
+        function fecharModal() {
+            modalOverlay.classList.remove('active');
+            modalOverlay.dataset.idToDelete = ''; 
+            modalOverlay.dataset.typeToDelete = '';
+        }
+
+        function confirmarExclusao() {
+            const id = modalOverlay.dataset.idToDelete; 
+            const type = modalOverlay.dataset.typeToDelete;
+
+            if (id && type) {
+                if (type === 'busca') {
+                    const index = mockBuscasSalvas.findIndex(b => b.id === id);
+                    if (index > -1) {
+                        mockBuscasSalvas.splice(index, 1);
+                        renderizarBuscas(); 
+                    }
+                } else if (type === 'favorito') {
+                    const index = mockFavoritos.findIndex(f => f.id === id);
+                    if (index > -1) {
+                        mockFavoritos.splice(index, 1);
+                        renderFavoritos(); 
+                    }
+                }
+            }
+            fecharModal(); 
+        }
+
+        if(modalConfirmBtn) modalConfirmBtn.addEventListener('click', confirmarExclusao);
+        if(modalCancelBtn) modalCancelBtn.addEventListener('click', fecharModal);
+        if(modalOverlay) modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) fecharModal(); });
+
+
+        // --- WIDGET 1: MENSAGENS NÃO LIDAS ---
+        function renderMensagensNaoLidas() {
+            const container = document.getElementById('widget-mensagens-nao-lidas');
+            if(!container) return;
+            
+            const mensagensNaoLidas = mockConversas.filter(c => c.unread);
+
+            if (mensagensNaoLidas.length === 0) {
+                container.innerHTML = '<p class="widget-empty-state">Nenhuma mensagem não lida no momento.</p>';
+                return;
+            }
+
+            let html = '<ul class="widget-list">';
+            mensagensNaoLidas.forEach(msg => {
+                // ATUALIZADO: Link para mensagens.html
+                html += `
+                    <li class="widget-list-item widget-item-message">
+                        <div class="message-info">
+                            <p><strong>${msg.nome}</strong></p>
+                            <p>"${msg.preview}"</p>
+                        </div>
+                        <a href="mensagens.html?conversa=${msg.id}" class="btn btn-primary btn-sm">Responder</a>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            container.innerHTML = html;
+        }
+
+        // --- WIDGET 2: BUSCAS SALVAS ---
+        function renderizarBuscas() {
+            const container = document.getElementById('lista-buscas-salvas-geral'); 
+            if (!container) return;
+            container.innerHTML = '';
+            
+            if (mockBuscasSalvas.length === 0) {
+                container.innerHTML = '<p class="widget-empty-state" style="padding: 0 1.5rem 1.5rem;">Você ainda não salvou nenhuma busca.</p>';
+                return;
+            }
+            mockBuscasSalvas.forEach(busca => {
+                let filtrosHTML = busca.filtros.map(f => `<span class="filtro-tag">${f}</span>`).join('');
+                container.innerHTML += `
+                    <div class="card-busca-salva" id="${busca.id}">
+                        <div class="busca-info">
+                            <h3>${busca.titulo}</h3>
+                            <div class="busca-filtros">${filtrosHTML}</div>
+                        </div>
+                        <div class="busca-actions">
+                            <button class="btn btn-primary btn-executar-busca" data-filtros="${busca.filtros.join(',')}">Executar Busca</button>
+                            <button class="btn btn-danger btn-sm btn-icon btn-excluir-busca" data-id="${busca.id}" title="Excluir Busca">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>`;
+            });
+            
+            container.querySelectorAll('.btn-excluir-busca').forEach(b => {
+                b.addEventListener('click', (e) => {
+                    const id = e.currentTarget.dataset.id;
+                    const item = mockBuscasSalvas.find(i => i.id === id);
+                    if (item) {
+                        modalMessage.textContent = `Tem certeza que deseja excluir a busca: "${item.titulo}"?`;
+                        modalOverlay.dataset.idToDelete = id;
+                        modalOverlay.dataset.typeToDelete = 'busca';
+                        modalOverlay.classList.add('active');
+                    }
+                });
+            });
+            container.querySelectorAll('.btn-executar-busca').forEach(b => {
+                b.addEventListener('click', (e) => alert(`Simulação: Buscando por ${e.currentTarget.dataset.filtros}`));
+            });
+        }
+
+        // --- WIDGET 3: FAVORITOS ---
+        function renderFavoritos() {
+            const container = document.getElementById('widget-favoritos');
+            if (!container) return;
+
+            if (mockFavoritos.length === 0) {
+                container.innerHTML = '<p class="widget-empty-state">Você ainda não favoritou nenhum imóvel.</p>';
+                return;
+            }
+
+            let html = '<ul class="widget-list">';
+            mockFavoritos.forEach(fav => {
+                html += `
+                    <li class="widget-item-favorito" id="${fav.id}">
+                        <img src="${fav.img}" alt="${fav.titulo}" class="favorito-thumb">
+                        <div class="favorito-info">
+                            <h3>${fav.titulo}</h3>
+                            <span class="favorito-price">${fav.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+                        </div>
+                        <div class="favorito-actions">
+                            <a href="#" class="btn btn-primary btn-sm" title="Ver Anúncio">Ver</a>
+                            <button class="btn btn-danger btn-sm btn-icon btn-remover-favorito" data-id="${fav.id}" title="Remover">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            container.innerHTML = html;
+
+            container.querySelectorAll('.btn-remover-favorito').forEach(b => {
+                b.addEventListener('click', (e) => {
+                    const id = e.currentTarget.dataset.id;
+                    const item = mockFavoritos.find(i => i.id === id);
+                    if (item) {
+                        modalMessage.textContent = `Remover "${item.titulo}" dos favoritos?`;
+                        modalOverlay.dataset.idToDelete = id;
+                        modalOverlay.dataset.typeToDelete = 'favorito'; 
+                        modalOverlay.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // --- WIDGET 4: RESUMO DOS ANÚNCIOS ---
+        function renderResumoAnuncios() {
+            const container = document.getElementById('widget-resumo-anuncios');
+            if(!container) return;
+            
+            if (mockAnuncios.length === 0) {
+                container.innerHTML = '<p class="widget-empty-state">Você ainda não possui anúncios.</p>';
+                return;
+            }
+
+            let html = '<ul class="widget-list">';
+            mockAnuncios.forEach(anuncio => {
+                const statusLabel = anuncio.pausado ? '<span class="paused-label">PAUSADO</span>' : 'Ativo';
+                // ATUALIZADO: Link para anuncio.html
+                html += `
+                    <li class="widget-list-item widget-item-anuncio">
+                        <div class="anuncio-icon-widget">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <div class="anuncio-info-widget">
+                            <h3>${anuncio.titulo}</h3>
+                            <span class="anuncio-stats">
+                                ${statusLabel} | 
+                                <i class="fa-solid fa-eye"></i> ${anuncio.visualizacoes} | 
+                                <i class="fa-solid fa-star"></i> ${anuncio.favoritos} 
+                            </span>
+                        </div>
+                        <div class="anuncio-controls-widget">
+                             <a href="anuncio.html" class="btn btn-secondary btn-sm">Gerenciar</a>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            container.innerHTML = html;
+        }
+
+        // --- WIDGET 5: DICAS RÁPIDAS ---
+        function renderDicasRapidas() {
+            const container = document.getElementById('widget-dicas-rapidas');
+            if(!container) return;
+
+            let html = `
+                <ul class="widget-list">
+                    <li class="widget-list-item widget-item-dica">
+                        <i class="fa-solid fa-camera"></i>
+                        <a href="#">Como tirar as melhores fotos para seu anúncio</a>
+                    </li>
+                    <li class="widget-list-item widget-item-dica">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <a href="#">Entenda a documentação rural (CAR, ITR)</a>
+                    </li>
+                    <li class="widget-list-item widget-item-dica">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <a href="#">Dicas de segurança para negociar</a>
+                    </li>
+                </ul>
+            `;
+            container.innerHTML = html;
+        }
+
+
+        // --- INICIALIZAÇÃO ---
+        renderMensagensNaoLidas();
+        renderizarBuscas(); 
+        renderFavoritos();
+        renderResumoAnuncios();
+        renderDicasRapidas();
     }
 
 
     // ===================================================================
-    // RODA APENAS NA PÁGINA "MEUS ANÚNCIOS"
+    // RODA APENAS NA PÁGINA "MEUS ANÚNCIOS" (ID: page-anuncio)
     // ===================================================================
-    else if (pageId === 'page-painel-anuncios') {
-        // (Código dos anúncios permanece o mesmo de antes...)
+    else if (pageId === 'page-anuncio') {
+        
         const mockAnuncios = [
-            { id: 'anuncio-1', img: 'https://images.unsplash.com/photo-1596924036923-9e3d84f4756b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Fazenda Pronta para Pecuária', preco: 4500000, visualizacoes: 1250, contatos: 12, pausado: false },
-            { id: 'anuncio-2', img: 'https://images.unsplash.com/photo-1444858291040-5c7f113a1eb1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Sítio para Agricultura Familiar', preco: 1200000, visualizacoes: 480, contatos: 5, pausado: true }
+            { id: 'anuncio-1', img: 'https://images.unsplash.com/photo-1596924036923-9e3d84f4756b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Fazenda Pronta para Pecuária', preco: 4500000, visualizacoes: 1250, favoritos: 28, pausado: false },
+            { id: 'anuncio-2', img: 'https://images.unsplash.com/photo-1444858291040-5c7f113a1eb1?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=200&h=150&fit=crop', titulo: 'Sítio para Agricultura Familiar', preco: 1200000, visualizacoes: 480, favoritos: 15, pausado: true }
         ];
         const listaContainer = document.getElementById('lista-anuncios');
 
-        function renderizarAnuncios() { /* ... (função igual a anterior) ... */ 
+        function renderizarAnuncios() { 
             if (!listaContainer) return;
             listaContainer.innerHTML = '';
             if (mockAnuncios.length === 0) {
@@ -71,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="anuncio-stats">
                             <span class="stat-item"><strong>Visualizações:</strong> ${anuncio.visualizacoes.toLocaleString('pt-BR')}</span>
-                            <span class="stat-item"><strong>Contatos:</strong> ${anuncio.contatos}</span>
+                            <span class="stat-item"><strong>Favoritos:</strong> ${anuncio.favoritos}</span>
                         </div>
                         <div class="anuncio-controls">
                             <button class="btn btn-secondary btn-sm btn-editar-anuncio" data-id="${anuncio.id}">Editar</button>
@@ -112,132 +389,218 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ===================================================================
-    // RODA APENAS NA PÁGINA "MINHAS BUSCAS SALVAS"
+    // RODA APENAS NA PÁGINA "MENSAGENS" (ID: page-mensagens)
     // ===================================================================
-    else if (pageId === 'page-painel-buscas') {
-        const mockBuscasSalvas = [
-            { id: 'busca-1', titulo: 'Fazendas em Castro, PR', filtros: ['Tipo: Fazenda', 'Aptidão: Pecuária', 'Local: Castro, PR'] },
-            { id: 'busca-2', titulo: 'Sítios com Rio', filtros: ['Tipo: Sítio', 'Recursos: Rio ou Córrego', 'Infra: Casa Sede'] },
-            { id: 'busca-3', titulo: 'Chácaras de Lazer (Piscina)', filtros: ['Tipo: Chácara', 'Infra: Piscina', 'Infra: Internet'] }
+    else if (pageId === 'page-mensagens') {
+        
+        const mockConversas = [
+            { id: 'c1', nome: 'Imobiliária Terra Forte', anuncioTitulo: 'Fazenda Pronta para Pecuária', preview: 'Olá! Sim, documentação 100%.', unread: true },
+            { id: 'c2', nome: 'João da Silva (Vendedor)', anuncioTitulo: 'Sítio para Agricultura Familiar', preview: 'A internet aqui é via rádio...', unread: false },
+            { id: 'c3', nome: 'Ana Pereira', anuncioTitulo: 'Chácara de Lazer com Nascente', preview: 'Obrigada pelo retorno!', unread: false }
         ];
-        const listaContainer = document.getElementById('lista-buscas-salvas');
 
-        function renderizarBuscas() {
+        const mockHistoricoMensagens = {
+            'c1': [
+                { tipo: 'recebida', texto: 'Olá, tenho interesse no anúncio "Fazenda Pronta para Pecuária". A documentação está em dia? Aceita permuta?' },
+                { tipo: 'enviada', texto: 'Olá! Sim, documentação 100%. No momento, apenas venda. Obrigado.' }
+            ],
+            'c2': [
+                { tipo: 'enviada', texto: 'Bom dia, o sinal de internet no "Sítio para Agricultura Familiar" é fibra ótica ou rádio?' },
+                { tipo: 'recebida', texto: 'Bom dia! A internet aqui é via rádio, mas funciona bem, 30mb.' }
+            ],
+            'c3': [
+                { tipo: 'enviada', texto: 'A nascente da "Chácara de Lazer" é dentro do terreno? Está registrada?' },
+                { tipo: 'recebida', texto: 'Sim, são duas nascentes, ambas dentro do terreno e com registro no CAR.' },
+                { tipo: 'enviada', texto: 'Perfeito, muito obrigada pela informação.' },
+                { tipo: 'recebida', texto: 'Obrigada pelo retorno!' }
+            ]
+        };
+
+        const listaContainer = document.getElementById('conversa-lista');
+        const chatPlaceholder = document.getElementById('chat-placeholder');
+        const chatJanela = document.getElementById('chat-janela');
+        const chatHeader = document.getElementById('chat-header');
+        const historicoContainer = document.getElementById('mensagens-historico');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        
+        let conversaAtivaId = null;
+
+        function renderizarConversas() {
             if (!listaContainer) return;
+            
+            const itemAtivo = listaContainer.querySelector('.conversa-item.active');
+            const idAtivo = itemAtivo ? itemAtivo.dataset.id : null;
+
             listaContainer.innerHTML = '';
-            if (mockBuscasSalvas.length === 0) {
-                listaContainer.innerHTML = '<p>Você ainda não salvou nenhuma busca.</p>';
-                return;
-            }
-            mockBuscasSalvas.forEach(busca => {
-                let filtrosHTML = busca.filtros.map(f => `<span class="filtro-tag">${f}</span>`).join('');
+            
+            mockConversas.forEach(conversa => {
+                const unreadClass = conversa.unread ? 'unread' : ''; 
                 listaContainer.innerHTML += `
-                    <div class="card-busca-salva" id="${busca.id}">
-                        <div class="busca-info">
-                            <h3>${busca.titulo}</h3>
-                            <div class="busca-filtros">${filtrosHTML}</div>
-                        </div>
-                        <div class="busca-actions">
-                            <button class="btn btn-primary btn-executar-busca" data-filtros="${busca.filtros.join(',')}">Executar Busca</button>
-                            <button class="btn btn-secondary btn-excluir-busca" data-id="${busca.id}">Excluir</button>
-                        </div>
-                    </div>`;
+                    <div class="conversa-item ${unreadClass}" data-id="${conversa.id}">
+                        <h3>${conversa.nome}</h3>
+                        <p>${conversa.preview}</p>
+                    </div>
+                `;
             });
-            attachEventListenersBuscas();
-        }
-        function handleExcluirBusca(event) {
-            const cardId = event.currentTarget.dataset.id;
-            const card = document.getElementById(cardId);
-            if (card && confirm(`Tem certeza que deseja excluir a busca salva:\n"${card.querySelector('h3').textContent}"?`)) {
-                const index = mockBuscasSalvas.findIndex(b => b.id === cardId);
-                if (index > -1) mockBuscasSalvas.splice(index, 1);
-                renderizarBuscas();
+            attachEventListenersConversas();
+
+            if (idAtivo) {
+                const novoItemAtivo = listaContainer.querySelector(`.conversa-item[data-id="${idAtivo}"]`);
+                if (novoItemAtivo) {
+                    novoItemAtivo.classList.add('active');
+                }
             }
         }
-        function handleExecutarBusca(event) {
-             alert(`Simulação: Redirecionando para a página de busca com os filtros: ${event.currentTarget.dataset.filtros}`);
+
+        function renderizarHistorico(conversaId) {
+            conversaAtivaId = conversaId;
+            const conversa = mockConversas.find(c => c.id === conversaId);
+            const historico = mockHistoricoMensagens[conversaId] || [];
+
+            if (conversa) {
+                conversa.unread = false; 
+                renderizarConversas(); 
+            }
+            
+            chatPlaceholder.style.display = 'none';
+            chatJanela.style.display = 'flex';
+
+            chatHeader.innerHTML = `
+                <h3>${conversa.nome}</h3>
+                <p>Referente a: ${conversa.anuncioTitulo}</p>
+            `;
+
+            historicoContainer.innerHTML = '';
+            historico.forEach(msg => {
+                historicoContainer.innerHTML += `
+                    <div class="msg-bolha ${msg.tipo}">
+                        ${msg.texto}
+                    </div>
+                `;
+            });
+
+            historicoContainer.scrollTop = historicoContainer.scrollHeight;
         }
-        function attachEventListenersBuscas() {
-            listaContainer.querySelectorAll('.btn-excluir-busca').forEach(b => b.addEventListener('click', handleExcluirBusca));
-            listaContainer.querySelectorAll('.btn-executar-busca').forEach(b => b.addEventListener('click', handleExecutarBusca));
+
+        function handleEnviarMensagem(e) {
+            e.preventDefault();
+            const texto = chatInput.value.trim();
+            if (texto === '' || !conversaAtivaId) return;
+
+            historicoContainer.innerHTML += `
+                <div class="msg-bolha enviada">
+                    ${texto}
+                </div>
+            `;
+            mockHistoricoMensagens[conversaAtivaId].push({ tipo: 'enviada', texto: texto });
+            chatInput.value = '';
+            historicoContainer.scrollTop = historicoContainer.scrollHeight;
+            chatInput.focus();
         }
-        renderizarBuscas();
+
+        function attachEventListenersConversas() {
+            listaContainer.querySelectorAll('.conversa-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    listaContainer.querySelectorAll('.conversa-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    renderizarHistorico(item.dataset.id);
+                });
+            });
+        }
+
+        chatForm.addEventListener('submit', handleEnviarMensagem);
+        renderizarConversas();
     }
 
 
     // ===================================================================
-    // RODA APENAS NA PÁGINA "MINHAS PERGUNTAS"
+    // RODA APENAS NA PÁGINA "MEU PERFIL" (ID: page-perfil)
     // ===================================================================
-    else if (pageId === 'page-painel-perguntas') {
-         const mockPerguntasUsuario = [
-            { id: 'q1', anuncioTitulo: 'Fazenda Pronta para Pecuária', anuncioLink: '/pages/imovel/imovel.html?id=prop1', pergunta: 'A documentação está em dia? Aceita permuta?', resposta: 'Olá! Sim, documentação 100%. No momento, apenas venda. Obrigado.', pendente: false },
-            { id: 'q2', anuncioTitulo: 'Sítio para Agricultura Familiar', anuncioLink: '/pages/imovel/imovel.html?id=prop2', pergunta: 'O sinal de internet é fibra ótica ou rádio?', resposta: null, pendente: true },
-            { id: 'q3', anuncioTitulo: 'Chácara de Lazer com Nascente', anuncioLink: '/pages/imovel/imovel.html?id=prop3', pergunta: 'A nascente é dentro do terreno? Está registrada?', resposta: 'Sim, são duas nascentes, ambas dentro do terreno e com registro no CAR.', pendente: false }
-        ];
-        const listaContainer = document.getElementById('lista-perguntas-usuario');
-
-        function renderizarPerguntas() {
-            if (!listaContainer) return;
-            listaContainer.innerHTML = '';
-            if (mockPerguntasUsuario.length === 0) {
-                listaContainer.innerHTML = '<p>Você ainda não fez nenhuma pergunta.</p>';
-                return;
-            }
-            mockPerguntasUsuario.forEach(item => {
-                listaContainer.innerHTML += `
-                    <div class="card-pergunta" id="pergunta-${item.id}">
-                        <div class="pergunta-header">
-                            <span>Você perguntou em:</span>
-                            <a href="${item.anuncioLink}" target="_blank">${item.anuncioTitulo}</a>
-                        </div>
-                        <div class="qa-item">
-                            <p class="qa-question"><strong>Sua Pergunta:</strong> ${item.pergunta}</p>
-                            ${item.pendente ? '<p class="qa-answer pending">(Aguardando resposta do vendedor)</p>' : `<p class="qa-answer"><strong>Resposta do Vendedor:</strong> ${item.resposta}</p>`}
-                        </div>
-                    </div>`;
-            });
-        }
-        renderizarPerguntas();
-    }
-
-
-    // ===================================================================
-    // RODA APENAS NA PÁGINA "MEU PERFIL"
-    // ===================================================================
-    else if (pageId === 'page-painel-perfil') {
+    else if (pageId === 'page-perfil') {
         console.log("Página 'Meu Perfil' carregada.");
-        const toggle = document.getElementById('toggle-seller-profile');
-        const sellerSection = document.getElementById('seller-profile-section');
-        const logoUpload = document.getElementById('logo-upload');
-        const logoPreview = document.getElementById('logo-preview');
+        
+        const isPremium = true; 
         const perfilForm = document.getElementById('perfil-form');
+        const formFields = perfilForm.querySelectorAll('input, textarea');
+        const sellerSection = document.getElementById('seller-profile-section');
+        const toggleSeller = document.getElementById('toggle-seller-profile');
+        const editButton = document.getElementById('edit-profile-btn');
+        const saveButton = document.getElementById('save-profile-btn');
+        const cancelButton = document.getElementById('cancel-profile-btn');
+        const changeLogoBtn = document.getElementById('change-logo-btn');
+        const headerNome = document.getElementById('perfil-header-nome');
+        const headerEmail = document.getElementById('perfil-header-email');
+        const premiumBadge = document.getElementById('premium-badge');
+        const logoPreview = document.getElementById('logo-preview');
+        const logoUpload = document.getElementById('logo-upload');
 
-        // **** POPULAR DADOS DO PERFIL ****
-        document.getElementById('perfil-nome').value = mockUserData.nome;
-        document.getElementById('perfil-email').value = mockUserData.email;
-        document.getElementById('perfil-telefone').value = mockUserData.telefone;
-
-        // Preenche dados do anunciante se existirem
-        if (mockUserData.isAnunciante && mockUserData.perfilAnunciante) {
-            toggle.checked = true;
-            document.getElementById('perfil-nome-publico').value = mockUserData.perfilAnunciante.nomePublico;
-            document.getElementById('perfil-creci').value = mockUserData.perfilAnunciante.creci;
-            document.getElementById('perfil-descricao').value = mockUserData.perfilAnunciante.descricao;
-            if (mockUserData.perfilAnunciante.logoUrl) {
-                logoPreview.src = mockUserData.perfilAnunciante.logoUrl;
+        function popularDados() {
+            const userData = mockUserData; 
+            headerNome.textContent = userData.nome;
+            headerEmail.textContent = userData.email;
+            premiumBadge.textContent = isPremium ? 'Usuário Premium' : 'Usuário Padrão';
+            if (userData.perfilAnunciante && userData.perfilAnunciante.logoUrl) {
+                logoPreview.src = userData.perfilAnunciante.logoUrl;
+            } else {
+                logoPreview.src = "https://via.placeholder.com/150/EEEEEE/AAAAAA?text=Logo";
             }
-        } else {
-            toggle.checked = false;
+            document.getElementById('perfil-nome').value = userData.nome;
+            document.getElementById('perfil-email').value = userData.email;
+            document.getElementById('perfil-telefone').value = userData.telefone;
+            
+            toggleSeller.checked = userData.isAnunciante;
+            if (userData.isAnunciante && userData.perfilAnunciante) {
+                sellerSection.style.display = 'block';
+                document.getElementById('perfil-nome-publico').value = userData.perfilAnunciante.nomePublico;
+                document.getElementById('perfil-creci').value = userData.perfilAnunciante.creci;
+                document.getElementById('perfil-descricao').value = userData.perfilAnunciante.descricao;
+            } else {
+                sellerSection.style.display = 'none';
+            }
         }
-
-        // Função e listener para mostrar/esconder perfil de anunciante
-        function updateSellerProfileVisibility() {
-            sellerSection.style.display = toggle.checked ? 'block' : 'none';
+        function toggleEditMode(isEditing) {
+            if (isEditing) {
+                formFields.forEach(field => field.disabled = false);
+                editButton.style.display = 'none';
+                document.getElementById('form-actions').style.display = 'flex';
+                changeLogoBtn.style.display = 'inline-block';
+                logoUpload.disabled = false;
+            } else {
+                formFields.forEach(field => field.disabled = true);
+                editButton.style.display = 'inline-block';
+                document.getElementById('form-actions').style.display = 'none';
+                changeLogoBtn.style.display = 'none';
+                logoUpload.disabled = true;
+            }
         }
-        updateSellerProfileVisibility(); // Chama ao carregar
-        toggle.addEventListener('change', updateSellerProfileVisibility); // Chama na mudança
-
-        // Listener para preview do logo
+        
+        editButton.addEventListener('click', () => toggleEditMode(true));
+        cancelButton.addEventListener('click', () => {
+            if (confirm('Descartar alterações?')) {
+                popularDados(); 
+                toggleEditMode(false); 
+            }
+        });
+        perfilForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Perfil salvo com sucesso! (Simulação)');
+            
+            mockUserData.nome = document.getElementById('perfil-nome').value;
+            mockUserData.email = document.getElementById('perfil-email').value;
+            mockUserData.telefone = document.getElementById('perfil-telefone').value;
+            mockUserData.isAnunciante = document.getElementById('toggle-seller-profile').checked;
+            if (mockUserData.isAnunciante) {
+                mockUserData.perfilAnunciante.nomePublico = document.getElementById('perfil-nome-publico').value;
+                mockUserData.perfilAnunciante.creci = document.getElementById('perfil-creci').value;
+                mockUserData.perfilAnunciante.descricao = document.getElementById('perfil-descricao').value;
+            }
+            
+            headerNome.textContent = mockUserData.nome;
+            headerEmail.textContent = mockUserData.email;
+            
+            toggleEditMode(false);
+        });
         logoUpload.addEventListener('change', function() {
             const file = this.files[0];
             if (file) {
@@ -246,19 +609,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.readAsDataURL(file);
             }
         });
-
-        // Listener para salvar (simulação)
-        perfilForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const novaSenha = document.getElementById('perfil-senha-nova').value;
-            const confirmaSenha = document.getElementById('perfil-senha-confirma').value;
-            if (novaSenha && novaSenha !== confirmaSenha) {
-                alert('Erro: As novas senhas não conferem!');
-                return;
-            }
-            alert('Perfil salvo com sucesso! (Simulação)');
-            // Aqui você coletaria os dados e enviaria para o backend
+        toggleSeller.addEventListener('change', () => {
+            sellerSection.style.display = toggleSeller.checked ? 'block' : 'none';
         });
+
+        popularDados(); 
+        toggleEditMode(false); 
+    }
+
+
+    // ===================================================================
+    // RODA APENAS NA PÁGINA "CONFIGURAÇÕES" (ID: page-configuracoes)
+    // ===================================================================
+    else if (pageId === 'page-configuracoes') {
+        console.log("Página de Configurações carregada.");
     }
 
 });

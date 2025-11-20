@@ -1,0 +1,112 @@
+/* painel-configuracoes.css
+   Estilos exclusivos da página de Configurações
+*/
+
+/* --- Ajustes de Layout do Formulário de Configuração --- */
+/* Garante o comportamento flexbox igual ao do perfil */
+#unified-config-section {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem 1.5rem; 
+    align-items: flex-start;
+}
+
+/* Ajuste específico para toggles dentro de configurações */
+#unified-config-section .form-group-toggle {
+    flex-basis: 100%;
+}
+
+#unified-config-section .form-group-toggle .form-helper {
+    padding-left: 27px;
+    margin-top: 0.25rem;
+}
+
+/* --- Grupos de Opções (Radio Buttons - Tema/Privacidade) --- */
+.config-option-group {
+    padding-top: 0.5rem;
+}
+
+.config-option-group label {
+    font-weight: 700;
+}
+
+.config-option-group .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.config-option-group .radio-group label {
+    font-weight: 400;
+}
+
+/* --- Área de Assinatura --- */
+.plan-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.5rem;
+}
+
+.plan-info p {
+    margin: 0;
+}
+
+/* --- Lista de Métodos de Pagamento --- */
+.payment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.payment-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.payment-list li span i {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Botão estilo link (usado para 'Remover cartão') */
+.btn-link-danger {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-link-danger:hover {
+    text-decoration: underline;
+}
+
+/* --- Zona de Perigo (Excluir Conta) --- */
+.form-section-danger {
+    flex-basis: 100%;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #fffaf8;
+}
+
+.form-section-danger h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.form-section-danger p {
+    margin-bottom: 1.5rem;
+}

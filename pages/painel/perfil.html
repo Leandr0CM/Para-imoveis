@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="painel.css">
+    
+    <link rel="stylesheet" href="perfil.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body id="page-perfil">
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="container painel-container">
+            
+            <aside class="painel-sidebar" id="sidebar-placeholder">
+                <p style="padding: 1rem 1.5rem;">Carregando menu...</p>
+            </aside>
+
+            <section class="painel-content">
+                <h1>Meu Perfil</h1>
+
+                <div class="perfil-header-card">
+                    <div class="logo-upload-wrapper">
+                        <img src="https://via.placeholder.com/150/EEEEEE/AAAAAA?text=Logo" id="logo-preview" alt="Preview do Logo">
+                        <input type="file" id="logo-upload" accept="image/*" disabled>
+                        <label for="logo-upload" class="btn btn-secondary btn-sm" id="change-logo-btn" style="display: none;">Trocar Imagem</label>
+                    </div>
+                    <div class="perfil-header-info">
+                        <h2 id="perfil-header-nome">[Nome do Usuário]</h2>
+                        <span class="premium-badge" id="premium-badge">Carregando...</span>
+                        <p id="perfil-header-email">[email@usuario.com]</p>
+                    </div>
+                    <div class="perfil-header-action">
+                        <button class="btn btn-primary" id="edit-profile-btn">Editar Perfil</button>
+                    </div>
+                </div>
+                
+                <form class="perfil-form" id="perfil-form">
+                    
+                    <div class="form-section" id="unified-form-section">
+                        
+                        <h2 class="form-section-subheader">Dados Pessoais</h2>
+                        
+                        <div class="form-group">
+                            <label for="perfil-nome">Nome Completo</label>
+                            <input type="text" id="perfil-nome" value="" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="perfil-email">E-mail</label>
+                            <input type="email" id="perfil-email" value="" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="perfil-telefone">Telefone (WhatsApp)</label>
+                            <input type="tel" id="perfil-telefone" value="" disabled>
+                        </div>
+
+                        <div class="form-group-toggle">
+                            <label>
+                                <input type="checkbox" id="toggle-seller-profile" disabled>
+                                Eu sou um anunciante (Corretor ou Imobiliária)
+                            </label>
+                        </div>
+
+                        <div class="form-section-subset" id="seller-profile-section" style="display: none;">
+                            <h2 class="form-section-subheader">Meu Perfil de Anunciante</h2>
+                            
+                            <div class="form-group">
+                                <label for="perfil-nome-publico">Nome Público (Imobiliária/Corretor)</label>
+                                <input type="text" id="perfil-nome-publico" value="" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="perfil-creci">CRECI</label>
+                                <input type="text" id="perfil-creci" value="" disabled>
+                            </div>
+                            <div class="form-group form-group-fullwidth">
+                                <label for="perfil-descricao">Descrição do Perfil</label>
+                                <textarea id="perfil-descricao" rows="5" disabled></textarea>
+                            </div>
+                        </div>
+
+                    </div> 
+
+                    <div class="form-actions-footer" id="form-actions" style="display: none;">
+                        <button type="submit" class="btn btn-primary" id="save-profile-btn">Salvar Alterações</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-profile-btn">Cancelar</button>
+                    </div>
+                </form> 
+            </section> 
+            
+        </div> 
+    </main>
+    <div id="footer-placeholder"></div>
+    
+    <script src="/main.js"></script>
+    <script src="painel.js"></script>
+</body>
+</html>

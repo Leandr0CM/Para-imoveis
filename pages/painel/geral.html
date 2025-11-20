@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão Geral - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="painel.css">
+    
+    <link rel="stylesheet" href="geral.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body id="page-geral"> 
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="container painel-container">
+            
+            <aside class="painel-sidebar" id="sidebar-placeholder">
+                <p style="padding: 1rem 1.5rem;">Carregando menu...</p>
+            </aside>
+
+            <section class="painel-content">
+                <h1>Visão Geral</h1>
+                <p>Bem-vindo ao seu painel, <span id="user-name-greeting">[Nome do Usuário]</span>!</p>
+                
+                <div class="dashboard-widgets-container">
+                    
+                    <div class="dashboard-widget">
+                        <h2><i class="fa-solid fa-envelope-open-text"></i> Mensagens Não Lidas</h2>
+                        <div class="widget-content" id="widget-mensagens-nao-lidas">
+                            <p>Carregando mensagens...</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widget">
+                        <h2><i class="fa-solid fa-magnifying-glass-plus"></i> Minhas Buscas Salvas</h2>
+                        <div class="widget-content" id="widget-buscas-salvas-content">
+                            <p>Seja notificado quando novos imóveis forem anunciados.</p>
+                            <div id="lista-buscas-salvas-geral">
+                                <p>Carregando buscas salvas...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widget">
+                        <h2><i class="fa-solid fa-star"></i> Imóveis Favoritados</h2>
+                        <div class="widget-content" id="widget-favoritos">
+                            <p>Carregando favoritos...</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widget">
+                        <h2><i class="fa-solid fa-bullhorn"></i> Resumo dos Anúncios</h2>
+                        <div class="widget-content" id="widget-resumo-anuncios">
+                            <p>Carregando anúncios...</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widget">
+                        <h2><i class="fa-solid fa-lightbulb"></i> Dicas Rápidas</h2>
+                        <div class="widget-content" id="widget-dicas-rapidas">
+                            <p>Carregando dicas...</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div> 
+        
+        <div class="modal-overlay" id="confirm-delete-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirmar Exclusão</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-delete-message">
+                        Tem certeza que deseja excluir este item?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="modal-btn-cancel">Cancelar</button>
+                    <button class="btn btn-danger" id="modal-btn-confirm-delete">Excluir</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <div id="footer-placeholder"></div>
+    
+    <script src="/main.js"></script>
+    <script src="painel.js"></script>
+</body>
+</html>

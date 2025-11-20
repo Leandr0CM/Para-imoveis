@@ -1,0 +1,94 @@
+/* painel-perfil.css
+   Estilos exclusivos da página de Meu Perfil
+*/
+
+/* --- Card de Cabeçalho (Identificação) --- */
+.perfil-header-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.perfil-header-info {
+    flex: 1;
+}
+
+.perfil-header-info h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.perfil-header-info p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+.perfil-header-action {
+    margin-left: auto;
+}
+
+/* --- Badge "Premium" --- */
+.premium-badge {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Upload de Logo/Foto --- */
+.logo-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#logo-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+}
+
+#logo-upload {
+    display: none;
+}
+
+.logo-upload-wrapper .btn-sm {
+    cursor: pointer;
+}
+
+/* Responsividade do Header */
+@media (max-width: 600px) {
+    .perfil-header-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .perfil-header-action {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .perfil-header-action .btn {
+        width: 100%;
+    }
+    
+    .logo-upload-wrapper {
+        flex-direction: column;
+    }
+}

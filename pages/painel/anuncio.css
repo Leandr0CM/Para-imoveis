@@ -1,0 +1,117 @@
+/* painel-anuncios.css
+*/
+
+/* --- Cabeçalho da Página (Título + Botão) --- */
+.painel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.painel-header h1 {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.btn-novo-anuncio {
+    flex-shrink: 0;
+}
+
+/* --- Card de Gerenciamento de Anúncio --- */
+.card-anuncio-gerencia {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+    transition: background-color 0.3s, opacity 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+/* Estado: Pausado */
+.card-anuncio-gerencia.paused {
+    background-color: #fafafa;
+    opacity: 0.7;
+}
+
+/* Imagem do Card */
+.anuncio-img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+/* Informações Principais */
+.anuncio-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.anuncio-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.anuncio-info .anuncio-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Estatísticas (Views/Favoritos) */
+.anuncio-stats {
+    flex-basis: 150px;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.anuncio-stats .stat-item {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Botões de Ação */
+.anuncio-controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-basis: 100px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Responsividade Específica dos Cards */
+@media (max-width: 600px) {
+    .card-anuncio-gerencia {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .anuncio-img {
+        width: 100%;
+        height: 150px;
+    }
+    
+    .anuncio-stats, .anuncio-controls {
+        flex-basis: auto;
+        width: 100%;
+    }
+    
+    .anuncio-controls {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+    }
+}

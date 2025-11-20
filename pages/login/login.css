@@ -53,6 +53,7 @@ main {
 .auth-forms-wrapper h2 {
     font-size: 1.8rem;
     text-align: center;
+    overflow-y: auto;
     margin-bottom: 1.5rem;
 }
 
@@ -121,4 +122,146 @@ main {
     height: 16px;
     margin-top: 2px;
     flex-shrink: 0;
+}
+
+
+/* --- Adicione isto ao final do seu login.css --- */
+
+/* 1. Limpa o fundo do body (removendo o gradiente) */
+body.login-page-body {
+    background-color: var(--bg-light); /* Fundo bege suave */
+}
+
+/* 2. Ajusta o .auth-container para o layout dividido */
+.auth-container.split-layout {
+    max-width: 900px; /* Aumenta a largura para comportar as colunas */
+    display: flex;
+    flex-direction: row; /* Colunas lado a lado */
+    overflow: hidden; /* Garante que o border-radius funcione */
+}
+
+/* 3. Estiliza a coluna da marca (Esquerda) */
+.auth-branding-column {
+    flex-basis: 40%; /* Ocupa 40% da largura */
+    background-color: var(--primary-color); /* Fundo verde */
+    color: white;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-branding-column .logo {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+.auth-branding-column p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* 4. Estiliza a coluna do formulário (Direita) */
+.auth-form-column {
+    flex-basis: 60%;
+    background-color: var(--bg-white);
+    
+    /* **** ADICIONE/MODIFIQUE ESTAS LINHAS **** */
+    display: flex;
+    flex-direction: column;
+    /* Define uma altura máxima baseada na tela */
+    max-height: 85vh; /* ex: 85% da altura da janela */
+    /* Remove o overflow: hidden se você o adicionou aqui */
+    /* ************************************** */
+}
+/* 5. Ajusta as abas para o novo layout */
+
+/* Ajusta o padding interno do formulário */
+.auth-form-column .auth-forms-wrapper {
+    padding: 2.5rem 3rem; /* Um pouco mais de espaço */
+}
+
+#forgot-password-form {
+    display: none;
+}
+
+/* --- Estilos para Login Social (Google) --- */
+
+/* 1. Divisor "OU" */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #888;
+    margin: 1.5rem 0; /* Espaçamento vertical */
+}
+
+/* Linhas laterais */
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Texto "OU" */
+.auth-divider span {
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 2. Botão Google */
+.btn-google {
+    width: 100%;
+    background-color: var(--bg-white);
+    color: #555;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+    
+    /* Layout flex para alinhar ícone e texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* Espaço entre o ícone e o texto */
+
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-google:hover {
+    background-color: var(--bg-light); /* Efeito hover sutil */
+    border-color: #ccc;
+}
+
+.btn-google svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsividade para o layout dividido */
+@media (max-width: 768px) {
+    .auth-container.split-layout {
+        flex-direction: column; /* Empilha as colunas no mobile */
+        max-width: 500px;
+         /* Volta ao tamanho original */
+    }
+    .auth-branding-column {
+        /* Esconde a coluna da marca no mobile para economizar espaço */
+        display: none; 
+    }
+    .auth-form-column {
+        flex-basis: 100%; /* Ocupa a largura total */
+    }
+}
+
+/* Garante que o <main> não tenha fundo, 
+   deixando o gradiente do body aparecer */
+main {
+    background-color: transparent;
+    padding: 3rem 0;
 }

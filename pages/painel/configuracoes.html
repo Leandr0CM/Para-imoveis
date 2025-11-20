@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="painel.css">
+    
+    <link rel="stylesheet" href="painel-configuracoes.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body id="page-configuracoes">
+    
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <div class="container painel-container">
+            
+            <aside class="painel-sidebar" id="sidebar-placeholder">
+                <p style="padding: 1rem 1.5rem;">Carregando menu...</p>
+            </aside>
+
+            <section class="painel-content">
+                <h1>Configurações</h1>
+                <p>Gerencie as preferências da sua conta e da plataforma.</p>
+                
+                <form class="perfil-form" id="config-form">
+                    
+                    <div class="form-section" id="unified-config-section">
+                        
+                        <h2 class="form-section-subheader"><i class="fa-solid fa-palette"></i> Preferências e Aparência</h2>
+                        
+                        <div class="form-group form-group-fullwidth config-option-group">
+                            <label>Gerenciamento do Tema</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="theme" value="light" checked> Claro</label>
+                                <label><input type="radio" name="theme" value="dark"> Escuro</label>
+                            </div>
+                        </div>
+
+                        <h2 class="form-section-subheader"><i class="fa-solid fa-shield-halved"></i> Segurança e Privacidade</h2>
+
+                        <div class="form-group">
+                            <label for="config-senha-atual">Senha Atual</label>
+                            <input type="password" id="config-senha-atual">
+                        </div>
+                        <div class="form-group">
+                            <label for="config-senha-nova">Nova Senha</label>
+                            <input type="password" id="config-senha-nova">
+                        </div>
+                        <div class="form-group">
+                            <label for="config-senha-confirma">Confirmar Nova Senha</label>
+                            <input type="password" id="config-senha-confirma">
+                        </div>
+
+                        <div class="form-group-toggle">
+                            <label>
+                                <input type="checkbox" id="toggle-2fa">
+                                Ativar Autenticação de Dois Fatores (2FA) via SMS
+                            </label>
+                            <p class="form-helper">Enviaremos um código para seu telefone a cada novo login.</p>
+                        </div>
+
+                        <div class="form-group form-group-fullwidth config-option-group">
+                            <label>Visibilidade do Perfil de Anunciante</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="visibility" value="public" checked> <strong>Público:</strong> Visível em buscadores (Ex: Google).</label>
+                                <label><input type="radio" name="visibility" value="private"> <strong>Privado:</strong> Visível apenas para usuários logados.</label>
+                            </div>
+                        </div>
+
+                        <h2 class="form-section-subheader"><i class="fa-solid fa-bell"></i> Notificações por E-mail</h2>
+
+                        <div class="form-group-toggle">
+                            <label>
+                                <input type="checkbox" id="notif-messages" checked>
+                                Me avise por e-mail quando eu receber uma nova mensagem.
+                            </label>
+                        </div>
+                        <div class="form-group-toggle">
+                            <label>
+                                <input type="checkbox" id="notif-promos">
+                                Quero receber dicas, novidades e promoções.
+                            </label>
+                        </div>
+
+                        <h2 class="form-section-subheader"><i class="fa-solid fa-credit-card"></i> Assinatura e Pagamento</h2>
+                        
+                        <div class="form-group form-group-fullwidth config-option-group">
+                            <label>Plano Atual</label>
+                            <div class="plan-info">
+                                <p>Seu plano atual é: <strong>Corretor Premium</strong> (Renova em 12/12/2025)</p>
+                                <button type="button" class="btn btn-secondary btn-sm">Gerenciar Assinatura</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-fullwidth config-option-group">
+                            <label>Métodos de Pagamento</label>
+                            <ul class="payment-list">
+                                <li>
+                                    <span><i class="fa-brands fa-cc-visa"></i> Visa •••• 1234 (Expira em 06/27)</span>
+                                    <button type="button" class="btn btn-link-danger">Remover</button>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-secondary btn-sm">Adicionar novo cartão</button>
+                        </div>
+
+                        <h2 class="form-section-subheader"><i class="fa-solid fa-trash-can"></i> Gerenciamento da Conta</h2>
+
+                        <div class="form-section-danger">
+                            <h3>Excluir Conta</h3>
+                            <p>Esta ação é permanente e não pode ser revertida. Todos os seus anúncios, mensagens e dados de perfil serão apagados.</p>
+                            <button type="button" class="btn btn-danger">Excluir minha conta permanentemente</button>
+                        </div>
+
+                    </div> 
+                    
+                    <div class="form-actions-footer">
+                        <button type="submit" class="btn btn-primary">Salvar Configurações</button>
+                    </div>
+
+                </form> 
+            </section> 
+            
+        </div> 
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script src="/main.js"></script>
+    <script src="painel.js"></script>
+</body>
+</html>

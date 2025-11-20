@@ -1,0 +1,205 @@
+/* painel-mensagens.css
+   Estilos exclusivos da página de Mensagens (Interface de Chat)
+*/
+
+/* Ajuste para remover padding/sombra do container principal apenas nesta página */
+.painel-content-chat {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+/* --- Container Principal do Chat --- */
+.chat-container {
+    display: flex;
+    height: 75vh;
+    min-height: 500px;
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* --- Painel da Esquerda (Lista de Conversas) --- */
+.conversa-lista {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lista-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.lista-items {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Item de Conversa */
+.conversa-item {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.conversa-item:hover {
+    background-color: var(--bg-light);
+}
+
+.conversa-item.active {
+    background-color: #eef2ff;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Estado: Não lido */
+.conversa-item.unread {
+    background-color: #fff8f0;
+}
+
+.conversa-item.unread h3::after {
+    content: ' •';
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+.conversa-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.conversa-item p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Painel da Direita (Janela do Chat) --- */
+.conversa-ativa {
+    flex: 3;
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Placeholder (quando nenhum chat está selecionado) */
+.chat-placeholder {
+    margin: auto;
+    text-align: center;
+    color: #777;
+}
+
+.chat-placeholder h3 {
+    font-size: 1.5rem;
+}
+
+/* Janela de Chat Ativa */
+.chat-janela {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.chat-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    flex-shrink: 0;
+}
+
+.chat-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.chat-header p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Área das Mensagens */
+.mensagens-historico {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bolhas de Mensagem */
+.msg-bolha {
+    max-width: 70%;
+    padding: 0.7rem 1rem;
+    border-radius: 18px;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.msg-bolha.recebida {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+}
+
+.msg-bolha.enviada {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+/* Área de Input */
+.chat-input-area {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    background-color: var(--bg-light);
+    flex-shrink: 0;
+}
+
+.chat-input-area form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+}
+
+/* Responsividade Específica do Chat */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 80vh;
+    }
+    
+    .conversa-lista {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        height: 200px;
+    }
+    
+    .conversa-ativa {
+        height: 500px;
+    }
+}

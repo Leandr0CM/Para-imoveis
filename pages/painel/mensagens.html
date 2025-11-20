@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Mensagens - PlataformaRural</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="painel.css">
+    
+    <link rel="stylesheet" href="mensagens.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body id="page-mensagens">
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="container painel-container">
+            
+            <aside class="painel-sidebar" id="sidebar-placeholder">
+                <p style="padding: 1rem 1.5rem;">Carregando menu...</p>
+            </aside>
+
+            <section class="painel-content painel-content-chat">
+                
+                <div class="chat-container">
+                    
+                    <aside class="conversa-lista" id="conversa-lista-container">
+                        <div class="lista-header">
+                            <h2>Mensagens</h2>
+                        </div>
+                        <div class="lista-items" id="conversa-lista">
+                            <p>Carregando conversas...</p>
+                        </div>
+                    </aside>
+
+                    <section class="conversa-ativa" id="conversa-ativa-container">
+                        
+                        <div class="chat-placeholder" id="chat-placeholder">
+                            <h3>Selecione uma conversa</h3>
+                            <p>Escolha uma pessoa na lista ao lado para ver o histórico de mensagens.</p>
+                        </div>
+
+                        <div class="chat-janela" id="chat-janela" style="display: none;">
+                            <header class="chat-header" id="chat-header">
+                                </header>
+                            
+                            <div class="mensagens-historico" id="mensagens-historico">
+                                </div>
+                            
+                            <footer class="chat-input-area">
+                                <form id="chat-form">
+                                    <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                                    <button type="submit" class="btn btn-primary" id="chat-send-btn">Enviar</button>
+                                </form>
+                            </footer>
+                        </div>
+
+                    </section>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    <div id="footer-placeholder"></div>
+    
+    <script src="/main.js"></script>
+    <script src="painel.js"></script>
+</body>
+</html>

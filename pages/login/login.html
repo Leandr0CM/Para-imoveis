@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar ou Cadastrar - PlataformaRural</title>
     
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="/style.css"> 
     
     <link rel="stylesheet" href="login.css">
     
@@ -13,87 +13,127 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+
+<body class="login-page-body">
 
     <div id="header-placeholder"></div>
 
     <main>
-        <div class="auth-container">
+        <div class="auth-container split-layout">
             
-            <div class="auth-tabs">
-                <button class="auth-tab-btn active" id="auth-tab-login">Entrar</button>
-                <button class="auth-tab-btn" id="auth-tab-register">Cadastrar-se</button>
+            <div class="auth-branding-column">
+                <div class="logo">PlataformaRural</div> 
+                <p>A plataforma especialista em compra e venda de imóveis rurais.</p>
             </div>
 
-            <div class="auth-forms-wrapper">
+            <div class="auth-form-column">
                 
-                <form id="login-form">
-                    <h2>Acesse sua conta</h2>
-                    <div class="form-group">
-                        <label for="login-email">E-mail</label>
-                        <input type="email" id="login-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-senha">Senha</label>
-                        <input type="password" id="login-senha" required>
-                    </div>
-                    <a href="#" id="forgot-password-link" class="auth-helper-link">Esqueceu sua senha?</a>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Entrar</button>
-                </form>
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn active" id="auth-tab-login">Entrar</button>
+                    <button class="auth-tab-btn" id="auth-tab-register">Cadastrar-se</button>
+                </div>
 
-                <form id="register-form">
-                    <h2>Crie sua conta</h2>
-                    <div class="form-group">
-                        <label for="reg-name">Nome Completo</label>
-                        <input type="text" id="reg-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-email">E-mail</label>
-                        <input type="email" id="reg-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-phone">Telefone (WhatsApp)</label>
-                        <input type="tel" id="reg-phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-senha">Senha</label>
-                        <input type="password" id="reg-senha" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-senha-confirm">Confirmar Senha</label>
-                        <input type="password" id="reg-senha-confirm" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tipo de Conta</label>
-                        <div class="form-group-radio">
-                            <label><input type="radio" name="account-type" id="tipo-comprador" value="comprador" checked> Quero comprar/buscar</label>
-                            <label><input type="radio" name="account-type" id="tipo-vendedor" value="vendedor"> Quero anunciar (Vendedor/Corretor)</label>
+                <div class="auth-forms-wrapper">
+                    
+                    <form id="login-form">
+                        <h2>Acesse sua conta</h2>
+                        <div class="form-group">
+                            <label for="login-email">E-mail</label>
+                            <input type="email" id="login-email" required>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="login-senha">Senha</label>
+                            <input type="password" id="login-senha" required>
+                        </div>
+                        <a href="#" id="forgot-password-link" class="auth-helper-link">Esqueceu sua senha?</a>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Entrar</button>
+                    
+                        <div class="auth-divider">
+                            <span>OU</span>
+                        </div>
+                        <button type="button" class="btn btn-google">
+                            <svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.20455C17.64 8.56621 17.5818 7.95239 17.4764 7.36364H9V10.8409H13.8436C13.635 11.9932 13.0009 12.9977 12.0477 13.661V15.8455H14.9564C16.6782 14.3364 17.64 12.0023 17.64 9.20455Z" fill="#4285F4"></path><path d="M9 18C11.43 18 13.4673 17.2023 14.9564 15.8455L12.0477 13.661C11.2582 14.1955 10.2182 14.5091 9 14.5091C6.96273 14.5091 5.22091 13.0886 4.60909 11.3159H1.59545V13.5818C3.06545 16.2 5.79773 18 9 18Z" fill="#34A853"></path><path d="M4.60909 11.3159C4.42364 10.8 4.32273 10.25 4.32273 9.68409C4.32273 9.11818 4.42364 8.56818 4.60909 8.05227V5.78636H1.59545C1.19182 6.78636 0.954545 7.88636 0.954545 9C0.954545 10.1136 1.19182 11.2136 1.59545 12.2136L4.60909 11.3159Z" fill="#FBBC05"></path><path d="M9 3.49091C10.32 3.49091 11.5077 3.95239 12.4782 4.88409L15.0218 2.34C13.4618 0.884091 11.43 0 9 0C5.79773 0 3.06545 1.8 1.59545 4.5L4.60909 6.27273C5.22091 4.49545 6.96273 3.49091 9 3.49091Z" fill="#EA4335"></path></svg>
+                            <span>Continuar com Google</span>
+                        </button>
+                        </form>
 
-                    <div class="form-group" id="creci-field-wrapper">
-                        <label for="reg-creci">CRECI (Obrigatório para corretores/imobiliárias)</label>
-                        <input type="text" id="reg-creci" placeholder="Ex: F-12345 ou J-54321">
-                    </div>
+                    <form id="register-form">
+                        <h2>Crie sua conta</h2>
+                        <div class="form-group">
+                            <label for="reg-name">Nome Completo</label>
+                            <input type="text" id="reg-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">E-mail</label>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Telefone (WhatsApp)</label>
+                            <input type="tel" id="reg-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-senha">Senha</label>
+                            <input type="password" id="reg-senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-senha-confirm">Confirmar Senha</label>
+                            <input type="password" id="reg-senha-confirm" required>
+                        </div>
 
-                    <div class="form-group-checkbox">
-                        <label>
-                            <input type="checkbox" id="reg-terms" required>
-                            Eu li e aceito os <a href="#termos" target="_blank">Termos de Uso</a> e a <a href="#privacidade" target="_blank">Política de Privacidade</a>.
-                        </label>
-                    </div>
+                        <div class="form-group">
+                            <label>Tipo de Conta</label>
+                            <div class="form-group-radio">
+                                <label><input type="radio" name="account-type" id="tipo-comprador" value="comprador" checked> Quero comprar/buscar</label>
+                                <label><input type="radio" name="account-type" id="tipo-vendedor" value="vendedor"> Quero anunciar (Vendedor/Corretor)</label>
+                            </div>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Criar Conta</button>
-                </form>
+                        <div class="form-group" id="creci-field-wrapper">
+                            <label for="reg-creci">CRECI (Obrigatório para corretores/imobiliárias)</label>
+                            <input type="text" id="reg-creci" placeholder="Ex: F-12345 ou J-54321">
+                        </div>
 
-            </div>
-        </div>
-    </main>
+                        <div class="form-group-checkbox">
+                            <label>
+                                <input type="checkbox" id="reg-terms" required>
+                                Eu li e aceito os <a href="/pages/institucionais/termos.html" target="_blank">Termos de Uso</a> e a <a href="/pages/institucionais/privacidade.html" target="_blank">Política de Privacidade</a>.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Criar Conta</button>
+                    
+                        <div class="auth-divider">
+                            <span>OU</span>
+                        </div>
+                        <button type="button" class="btn btn-google">
+                            <svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.20455C17.64 8.56621 17.5818 7.95239 17.4764 7.36364H9V10.8409H13.8436C13.635 11.9932 13.0009 12.9977 12.0477 13.661V15.8455H14.9564C16.6782 14.3364 17.64 12.0023 17.64 9.20455Z" fill="#4285F4"></path><path d="M9 18C11.43 18 13.4673 17.2023 14.9564 15.8455L12.0477 13.661C11.2582 14.1955 10.2182 14.5091 9 14.5091C6.96273 14.5091 5.22091 13.0886 4.60909 11.3159H1.59545V13.5818C3.06545 16.2 5.79773 18 9 18Z" fill="#34A853"></path><path d="M4.60909 11.3159C4.42364 10.8 4.32273 10.25 4.32273 9.68409C4.32273 9.11818 4.42364 8.56818 4.60909 8.05227V5.78636H1.59545C1.19182 6.78636 0.954545 7.88636 0.954545 9C0.954545 10.1136 1.19182 11.2136 1.59545 12.2136L4.60909 11.3159Z" fill="#FBBC05"></path><path d="M9 3.49091C10.32 3.49091 11.5077 3.95239 12.4782 4.88409L15.0218 2.34C13.4618 0.884091 11.43 0 9 0C5.79773 0 3.06545 1.8 1.59545 4.5L4.60909 6.27273C5.22091 4.49545 6.96273 3.49091 9 3.49091Z" fill="#EA4335"></path></svg>
+                            <span>Continuar com Google</span>
+                        </button>
+                        </form>
+
+                    <form id="forgot-password-form">
+                        <h2>Recuperar Senha</h2>
+                        <p style="text-align: center; margin-bottom: 1.5rem; color: #555;">
+                            Digite seu e-mail cadastrado e enviaremos um link para redefinir sua senha.
+                        </p>
+                        
+                        <div class="form-group">
+                            <label for="recovery-email">E-mail</label>
+                            <input type="email" id="recovery-email" required placeholder="seu.email@exemplo.com">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Enviar Link de Recuperação</button>
+                        
+                        <a href="#" id="back-to-login-link" class="auth-helper-link" style="text-align: center; display: block; margin-top: 1.5rem;">
+                            Lembrou a senha? Voltar para o Login
+                        </a>
+                    </form>
+
+                </div> </div> </div> </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="login.js"></script>
-    <script src="../../main.js"></script>
+    <script src="/main.js"></script> 
 </body>
 </html>

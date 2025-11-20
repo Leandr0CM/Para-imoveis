@@ -128,6 +128,7 @@ h3 { font-size: 1.4rem; }
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="number"],
+.form-group input[type="password"],
 .form-group textarea,
 .form-group select {
     width: 100%;
