@@ -33,7 +33,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec3",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Fazenda+Gado+Corte",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Fazenda+Gado+Corte",
     badge: null,
     price: 6200000,
     title: "Fazenda Gado de Corte",
@@ -47,7 +47,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec4",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Sitio+Ovelhas",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sitio+Ovelhas",
     badge: "Oportunidade",
     price: 750000,
     title: "Sítio Ovinocultura",
@@ -61,7 +61,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec5",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Area+Pasto+Rotacionado",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Area+Pasto+Rotacionado",
     badge: null,
     price: 2100000,
     title: "Área Pasto Rotacionado",
@@ -75,7 +75,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec6",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Fazenda+Confinamento",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Fazenda+Confinamento",
     badge: null,
     price: 10500000,
     title: "Estrutura Confinamento Bovino",
@@ -89,7 +89,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec7",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Sitio+Haras",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Sitio+Haras",
     badge: "Destaque",
     price: 3200000,
     title: "Sítio Haras Formado",
@@ -103,7 +103,7 @@ const mockPecuariaDestaques = [
   {
     id: "pec8",
     imgSrc:
-      "https://placehold.co/600x400/4a7c59/ffffff?text=Fazenda+Leite+A2",
+      "https://via.placeholder.com/600x400/4a7c59/ffffff?text=Fazenda+Leite+A2",
     badge: null,
     price: 8800000,
     title: "Fazenda Leite A2 Certificada",
@@ -149,7 +149,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr3",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Area+Plantio+Milho",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Area+Plantio+Milho",
     badge: null,
     price: 5500000,
     title: "Área Plana para Plantio",
@@ -163,7 +163,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr4",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Sitio+Hortifruti",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Sitio+Hortifruti",
     badge: "Novo",
     price: 680000,
     title: "Sítio Hortifruti c/ Estufa",
@@ -178,7 +178,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr5",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Fazenda+Trigo",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Fazenda+Trigo",
     badge: "Destaque",
     price: 9100000,
     title: "Fazenda de Trigo Irrigada",
@@ -193,7 +193,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr6",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Sitio+Organico",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Sitio+Organico",
     badge: null,
     price: 1500000,
     title: "Sítio Orgânico Certificado",
@@ -207,7 +207,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr7",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Fazenda+Cafe",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Fazenda+Cafe",
     badge: null,
     price: 12000000,
     title: "Fazenda Café Especial",
@@ -221,7 +221,7 @@ const mockAgriculturaDestaques = [
   {
     id: "agr8",
     imgSrc:
-      "https://placehold.co/600x400/8b7355/ffffff?text=Area+Plantio+Batata",
+      "https://via.placeholder.com/600x400/8b7355/ffffff?text=Area+Plantio+Batata",
     badge: "Oportunidade",
     price: 4300000,
     title: "Área Plantio Batata/Cebola",
@@ -239,7 +239,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr1",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Area+Arrendar+Soja",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Area+Arrendar+Soja",
     badge: "Destaque",
     price: 80,
     priceSuffix: " sc/ha/ano",
@@ -253,7 +253,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr2",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Pasto+Arrendar+Gado",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Pasto+Arrendar+Gado",
     badge: null,
     price: 50,
     priceSuffix: " R$/cab/mês",
@@ -266,7 +266,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr3",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Chacara+Arrendar",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Chacara+Arrendar",
     badge: "Novo",
     price: 2500,
     priceSuffix: " R$/mês",
@@ -278,7 +278,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr4",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Area+Arrendar+Reflorestamento",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Area+Arrendar+Reflorestamento",
     badge: null,
     price: 1500,
     priceSuffix: " R$/ha/ano",
@@ -291,7 +291,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr5",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Fazenda+Arrendar+Cana",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Fazenda+Arrendar+Cana",
     badge: null,
     price: 90,
     priceSuffix: " ton/alq/ano",
@@ -305,7 +305,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr6",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Sitio+Arrendar+Cavalo",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Sitio+Arrendar+Cavalo",
     badge: "Destaque",
     price: 3500,
     priceSuffix: " R$/mês",
@@ -317,7 +317,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr7",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Area+Arrendar+Pinus",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Area+Arrendar+Pinus",
     badge: null,
     price: 1200,
     priceSuffix: " R$/ha/ano",
@@ -330,7 +330,7 @@ const mockArrendamentoDestaques = [
   {
     id: "arr8",
     imgSrc:
-      "https://placehold.co/600x400/6b8e9e/ffffff?text=Area+Arrendar+Hortifruti",
+      "https://via.placeholder.com/600x400/6b8e9e/ffffff?text=Area+Arrendar+Hortifruti",
     badge: null,
     price: 4000,
     priceSuffix: " R$/mês",

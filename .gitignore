@@ -1,0 +1,9 @@
+# Node / build artifacts
+node_modules/
+/dist
+
+# Environment
+.env
+
+# Generated site config (contains keys)
+scripts/site-config.js
